@@ -1,0 +1,584 @@
+/* HERO */
+
+.hero-banner {
+    background: linear-gradient(135deg,
+            #4A7DFF,
+            #55D6FF);
+
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.hero-banner h1 {
+    margin-bottom: 10px;
+}
+
+/* STATS */
+
+.task-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    color: #7A8599;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    color: #2F3542;
+    font-size: 32px;
+}
+
+.total {
+    border-top: 5px solid #4A7DFF;
+}
+
+.completed {
+    border-top: 5px solid #55D6FF;
+}
+
+.progress {
+    border-top: 5px solid #FFC83D;
+}
+
+.overdue {
+    border-top: 5px solid #E23A8E;
+}
+
+/* ADD TASK */
+
+.add-task-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.add-task-card h2 {
+    margin-bottom: 20px;
+    color: #2F3542;
+}
+
+.task-form {
+    display: flex;
+    gap: 15px;
+}
+
+.task-form input {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #dcdfe6;
+
+    border-radius: 10px;
+}
+
+.task-form button {
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-weight: 600;
+
+    background: linear-gradient(135deg,
+            #4A7DFF,
+            #55D6FF);
+}
+
+/* TASK BOARD */
+
+.task-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+.task-column {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.task-column h2 {
+    margin-bottom: 20px;
+    color: #2F3542;
+}
+
+/* TASK CARDS */
+
+.task-card {
+    background: #f8fafc;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    margin-bottom: 15px;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+    border-left: 5px solid #4A7DFF;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.task-card h3 {
+    margin-bottom: 10px;
+    color: #2F3542;
+}
+
+.task-card p {
+    color: #7A8599;
+    margin-bottom: 10px;
+}
+
+.task-card span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4A7DFF;
+}
+
+/* ACTIVITY */
+
+.activity-panel {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.activity-panel h2 {
+    margin-bottom: 15px;
+    color: #2F3542;
+}
+
+.activity-panel ul {
+    list-style: none;
+}
+
+.activity-panel li {
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid #f0f0f0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px) {
+
+    .task-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .task-board {
+        grid-template-columns: 1fr;
+    }
+
+    .task-form {
+        flex-direction: column;
+    }
+}
+
+/* PRODUCTIVITY PANEL */
+
+.productivity-panel {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.productivity-left {
+
+    width: 35%;
+
+    text-align: center;
+}
+
+.productivity-left h2 {
+
+    margin-bottom: 25px;
+
+    color: #2F3542;
+}
+
+/* RING */
+
+.progress-ring {
+
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+
+.progress-ring svg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+
+    fill: none;
+
+    stroke: #e6eaf2;
+
+    stroke-width: 12;
+}
+
+.progress-fill {
+
+    fill: none;
+
+    stroke: url(#gradient);
+
+    stroke-width: 12;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 440;
+
+    stroke-dashoffset: 53;
+}
+
+.progress-text {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #4A7DFF;
+}
+
+/* METRICS */
+
+.productivity-right {
+
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.metric-card {
+
+    background:
+        linear-gradient(135deg,
+            #f8fbff,
+            #ffffff);
+
+    border-left:
+        5px solid #4A7DFF;
+
+    border-radius: 15px;
+
+    padding: 20px;
+}
+
+.metric-card h3 {
+
+    color: #7A8599;
+
+    font-size: 15px;
+
+    margin-bottom: 10px;
+}
+
+.metric-card p {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #2F3542;
+}
+
+.task-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+.priority {
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.high {
+    background: #ffe5e5;
+    color: #ff4d4d;
+}
+
+.medium {
+    background: #fff5db;
+    color: #f0a500;
+}
+
+.low {
+    background: #e8fff1;
+    color: #00a854;
+}
+
+.due-date {
+    font-size: 12px;
+    color: #7A8599;
+}
+
+.task-column:nth-child(1) {
+    border-top: 5px solid #E23A8E;
+}
+
+.task-column:nth-child(2) {
+    border-top: 5px solid #FFC83D;
+}
+
+.task-column:nth-child(3) {
+    border-top: 5px solid #55D6FF;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #E5EAF5;
+    stroke-width: 12;
+}
+
+.progress-fill {
+    fill: none;
+    stroke: url(#gradient);
+    stroke-width: 12;
+    stroke-linecap: round;
+
+    stroke-dasharray: 440;
+    stroke-dashoffset: 53;
+
+    transition: 1s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #4A7DFF;
+}
+
+/* PRODUCTIVITY PANEL */
+
+.productivity-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.productivity-left,
+.productivity-right {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.productivity-left h2 {
+    margin-bottom: 25px;
+    color: #2F3542;
+}
+
+.progress-ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #E5EAF5;
+    stroke-width: 12;
+}
+
+.progress-fill {
+    fill: none;
+    stroke: url(#gradient);
+    stroke-width: 12;
+    stroke-linecap: round;
+
+    stroke-dasharray: 440;
+
+    /* 88% */
+    stroke-dashoffset: 53;
+
+    transition: 1s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-text h2 {
+    color: #4A7DFF;
+    font-size: 40px;
+    margin: 0;
+}
+
+.progress-text span {
+    color: #7A8599;
+    font-size: 14px;
+}
+
+.productivity-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.metric-card {
+    background: #F8FAFF;
+    border-left: 5px solid #4A7DFF;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.metric-card h3 {
+    font-size: 14px;
+    color: #7A8599;
+    margin-bottom: 10px;
+}
+
+.metric-card p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2F3542;
+}
+
+.progress-bg,
+.progress-fill {
+    fill: none;
+    stroke-width: 12;
+    transform-origin: center;
+}
+
+.progress-bg {
+    stroke: #E5EAF5;
+}
+
+.progress-fill {
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 53;
+}
+
+.progress-ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

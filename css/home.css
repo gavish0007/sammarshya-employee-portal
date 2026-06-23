@@ -1,0 +1,247 @@
+/* HERO */
+
+.hero-banner {
+    background: linear-gradient(135deg,
+            #4A7DFF,
+            #55D6FF);
+
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.hero-banner h1 {
+    margin-bottom: 10px;
+}
+
+.hero-banner p {
+    opacity: 0.95;
+}
+
+
+/* QUICK ACCESS */
+
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.quick-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.quick-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quick-card i {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.quick-card h3 {
+    color: #2F3542;
+    font-size: 16px;
+}
+
+
+/* BRAND COLORS FOR QUICK CARDS */
+
+.quick-card:nth-child(1) {
+    border-top: 5px solid #4A7DFF;
+}
+
+.quick-card:nth-child(1) i {
+    color: #4A7DFF;
+}
+
+.quick-card:nth-child(2) {
+    border-top: 5px solid #55D6FF;
+}
+
+.quick-card:nth-child(2) i {
+    color: #55D6FF;
+}
+
+.quick-card:nth-child(3) {
+    border-top: 5px solid #FFC83D;
+}
+
+.quick-card:nth-child(3) i {
+    color: #FFC83D;
+}
+
+.quick-card:nth-child(4) {
+    border-top: 5px solid #E23A8E;
+}
+
+.quick-card:nth-child(4) i {
+    color: #E23A8E;
+}
+
+.quick-card:nth-child(5) {
+    border-top: 5px solid #4A7DFF;
+}
+
+.quick-card:nth-child(5) i {
+    color: #4A7DFF;
+}
+
+.quick-card:nth-child(6) {
+    border-top: 5px solid #55D6FF;
+}
+
+.quick-card:nth-child(6) i {
+    color: #55D6FF;
+}
+
+
+/* DASHBOARD GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+/* PANELS */
+
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    min-height: 380px;
+    /* same height for all cards */
+}
+
+.panel h2 {
+    margin-bottom: 15px;
+    color: #4A7DFF;
+}
+
+.panel p,
+.panel li {
+    color: #7A8599;
+    margin-bottom: 10px;
+}
+
+
+/* PANEL ACCENTS */
+
+.attendance-panel {
+    border-left: 5px solid #4A7DFF;
+}
+
+.holiday-panel {
+    border-left: 5px solid #FFC83D;
+}
+
+.track-panel {
+    border-left: 5px solid #55D6FF;
+}
+
+.announcement-panel {
+    border-left: 5px solid #E23A8E;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.live-badge {
+    background: #e9fff2;
+    color: #16a34a;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.session-date {
+    color: #7A8599;
+    margin-bottom: 20px;
+}
+
+.timer-section {
+    margin-bottom: 20px;
+}
+
+.timer-section p {
+    font-size: 14px;
+    color: #7A8599;
+}
+
+.timer-section h1 {
+    font-size: 42px;
+    color: #2F3542;
+    margin-top: 5px;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 78%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            #4A7DFF,
+            #55D6FF);
+}
+
+.session-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.session-btn {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    cursor: pointer;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    background: linear-gradient(135deg,
+            #4A7DFF,
+            #55D6FF);
+
+    transition: 0.3s;
+}
+
+.session-btn:hover {
+    transform: translateY(-2px);
+}

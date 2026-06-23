@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance | Sammarshya Employee Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/attendance.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo-section">
+                <img src="assets/logo/logo.jpeg" alt="Logo">
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    To Do
+                </a>
+
+                <a href="attendance.html" class="menu-item active">
+                    <i class="fa-solid fa-clock"></i>
+                    Attendance
+                </a>
+
+                <a href="leave.html" class="menu-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Leave
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- NAVBAR -->
+
+            <header class="navbar">
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search attendance records...">
+                </div>
+
+                <div class="nav-right">
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+
+                    <div class="profile">
+                        <div class="avatar">G</div>
+                        <span>Gavish</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- CONTENT -->
+
+            <section class="content">
+
+                <!-- HERO -->
+
+                <div class="hero-banner">
+
+                    <h1>Attendance Management</h1>
+
+                    <p>
+                        Track working hours, attendance records and login sessions.
+                    </p>
+
+                </div>
+
+                <!-- STATS -->
+
+                <div class="attendance-stats">
+
+                    <div class="attendance-card present">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <h3>Present Days</h3>
+
+                        <h2>22</h2>
+
+                    </div>
+
+                    <div class="attendance-card late">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <h3>Late Logins</h3>
+
+                        <h2>03</h2>
+
+                    </div>
+
+                    <div class="attendance-card hours">
+
+                        <i class="fa-solid fa-business-time"></i>
+
+                        <h3>Work Hours</h3>
+
+                        <h2>176h</h2>
+
+                    </div>
+
+                    <div class="attendance-card absent">
+
+                        <i class="fa-solid fa-circle-xmark"></i>
+
+                        <h3>Absent Days</h3>
+
+                        <h2>01</h2>
+
+                    </div>
+
+                </div>
+
+                <!-- SESSION + PRODUCTIVITY -->
+
+                <div class="attendance-top-grid">
+
+                    <!-- CURRENT SESSION -->
+
+                    <div class="session-card">
+
+                        <h2>Current Work Session</h2>
+
+                        <div class="session-status">
+
+                            <span class="online-dot"></span>
+
+                            Logged In
+                        </div>
+
+                        <div class="session-info">
+
+                            <div class="info-box">
+
+                                <h4>Login Time</h4>
+
+                                <p>09:12 AM</p>
+
+                            </div>
+
+                            <div class="info-box">
+
+                                <h4>Session Time</h4>
+
+                                <p>04h 37m</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="session-buttons">
+
+                            <button class="login-btn">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                Login
+                            </button>
+
+                            <button class="logout-btn">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PRODUCTIVITY RING -->
+
+                    <div class="attendance-analytics">
+
+                        <h2>Today's Progress</h2>
+
+                        <div class="analytics-circle">
+
+                            <svg width="180" height="180">
+
+                                <defs>
+
+                                    <linearGradient id="attendanceGradient">
+
+                                        <stop offset="0%" stop-color="#4A7DFF" />
+
+                                        <stop offset="50%" stop-color="#55D6FF" />
+
+                                        <stop offset="100%" stop-color="#E23A8E" />
+
+                                    </linearGradient>
+
+                                </defs>
+
+                                <circle class="analytics-bg" cx="90" cy="90" r="70">
+                                </circle>
+
+                                <circle class="analytics-fill" cx="90" cy="90" r="70">
+                                </circle>
+
+                            </svg>
+
+                            <div class="circle-inner">
+
+                                <h2>78%</h2>
+
+                                <span>Daily Goal</span>
+
+                            </div>
+
+                        </div>
+
+                        <p class="goal-text">
+                            6.2 hrs worked out of 8 hrs
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- WEEKLY CHART + INSIGHTS -->
+
+                <div class="attendance-middle-grid">
+
+                    <div class="chart-card">
+
+                        <h2>Weekly Working Hours</h2>
+
+                        <canvas id="attendanceChart"></canvas>
+
+                    </div>
+
+                    <div class="insights-card">
+
+                        <h2>Insights</h2>
+
+                        <div class="insight-item">
+                            <span>Average Login</span>
+                            <strong>09:08 AM</strong>
+                        </div>
+
+                        <div class="insight-item">
+                            <span>Attendance Streak</span>
+                            <strong>14 Days</strong>
+                        </div>
+
+                        <div class="insight-item">
+                            <span>Avg Hours</span>
+                            <strong>8.2h</strong>
+                        </div>
+
+                        <div class="insight-item">
+                            <span>Overtime</span>
+                            <strong>12h</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CALENDAR -->
+
+                <div class="calendar-card">
+
+                    <h2>Monthly Attendance Calendar</h2>
+
+                    <div class="attendance-calendar">
+
+                        <div class="calendar-header">
+
+                            <button>
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <h3>August 2026</h3>
+
+                            <button>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="calendar-days">
+
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+
+                        </div>
+
+                        <div class="calendar-grid">
+
+                            <div class="empty"></div>
+                            <div class="empty"></div>
+
+                            <div class="present-day">1</div>
+                            <div class="present-day">2</div>
+                            <div class="present-day">3</div>
+                            <div class="late-day">4</div>
+                            <div class="present-day">5</div>
+
+                            <div class="present-day">6</div>
+                            <div class="leave-day">7</div>
+                            <div class="present-day">8</div>
+                            <div class="present-day">9</div>
+                            <div class="present-day">10</div>
+                            <div class="absent-day">11</div>
+                            <div class="present-day">12</div>
+
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                            <div>16</div>
+                            <div>17</div>
+                            <div>18</div>
+                            <div>19</div>
+
+                            <div>20</div>
+                            <div>21</div>
+                            <div>22</div>
+                            <div>23</div>
+                            <div>24</div>
+                            <div>25</div>
+                            <div>26</div>
+
+                            <div>27</div>
+                            <div>28</div>
+                            <div>29</div>
+                            <div>30</div>
+                            <div>31</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="calendar-legend">
+
+                    <div class="legend-item">
+                        <span class="legend-box present-box"></span>
+                        <span>Present</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-box late-box"></span>
+                        <span>Late Login</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-box absent-box"></span>
+                        <span>Absent</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-box today-box"></span>
+                        <span>Today</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/attendance.js"></script>
+
+</body>
+
+</html>

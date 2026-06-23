@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do | Sammarshya Employee Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/todo.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo-section">
+                <img src="assets/logo/logo.jpeg" alt="Logo">
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+                <a href="todo.html" class="menu-item active">
+                    <i class="fa-solid fa-list-check"></i>
+                    To Do
+                </a>
+
+                <a href="attendance.html" class="menu-item">
+                    <i class="fa-solid fa-clock"></i>
+                    Attendance
+                </a>
+
+                <a href="leave.html" class="menu-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Leave
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- NAVBAR -->
+
+            <header class="navbar">
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search tasks...">
+                </div>
+
+                <div class="nav-right">
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            G
+                        </div>
+
+                        <span>Gavish</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- PAGE CONTENT -->
+
+            <section class="content">
+
+                <!-- HERO -->
+
+                <div class="hero-banner">
+
+                    <h1>Task Management</h1>
+
+                    <p>
+                        Organize your work, track progress and stay productive.
+                    </p>
+
+                </div>
+
+                <!-- STATS -->
+
+                <div class="task-stats">
+
+                    <div class="stat-card total">
+                        <h3>Total Tasks</h3>
+                        <h2>24</h2>
+                    </div>
+
+                    <div class="stat-card completed">
+                        <h3>Completed</h3>
+                        <h2>15</h2>
+                    </div>
+
+                    <div class="stat-card progress">
+                        <h3>In Progress</h3>
+                        <h2>6</h2>
+                    </div>
+
+                    <div class="stat-card overdue">
+                        <h3>Overdue</h3>
+                        <h2>3</h2>
+                    </div>
+
+                </div>
+
+                <!-- ADD TASK -->
+
+                <div class="add-task-card">
+
+                    <h2>Create New Task</h2>
+
+                    <div class="task-form">
+
+                        <input type="text" placeholder="Task Title">
+
+                        <input type="date">
+
+                        <button>Add Task</button>
+
+                    </div>
+
+                </div>
+
+                <!-- TASK BOARD -->
+
+                <div class="task-board">
+
+                    <!-- Pending -->
+
+                    <div class="task-column">
+
+                        <h2>Pending</h2>
+
+                        <div class="task-card">
+
+                            <h3>Finish Employee Portal UI</h3>
+
+                            <p>
+                                Complete Home Page Design
+                            </p>
+
+                            <div class="task-footer">
+
+                                <span class="priority high">
+                                    High Priority
+                                </span>
+
+                                <span class="due-date">
+                                    Today
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="task-card">
+
+                            <h3>Meeting With Manager</h3>
+
+                            <p>
+                                Discuss Attendance Module
+                            </p>
+
+                            <div class="task-footer">
+
+                                <span class="priority medium">
+                                    Medium Priority
+                                </span>
+
+                                <span class="due-date">
+                                    Tomorrow
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- In Progress -->
+
+                    <div class="task-column">
+
+                        <h2>In Progress</h2>
+
+                        <div class="task-card">
+
+                            <h3>To Do Dashboard</h3>
+
+                            <p>
+                                Building HRMS Task Page
+                            </p>
+
+                            <div class="task-footer">
+
+                                <span class="priority high">
+                                    High Priority
+                                </span>
+
+                                <span class="due-date">
+                                    Ongoing
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Completed -->
+
+                    <div class="task-column">
+
+                        <h2>Completed</h2>
+
+                        <div class="task-card">
+
+                            <h3>Project Structure Setup</h3>
+
+                            <p>
+                                HTML CSS JS Files Created
+                            </p>
+
+                            <div class="task-footer">
+
+                                <span class="priority low">
+                                    Completed
+                                </span>
+
+                                <span class="due-date">
+                                    Done
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RECENT ACTIVITY -->
+
+                <div class="productivity-panel">
+
+                    <div class="productivity-left">
+
+                        <h2>Today's Productivity</h2>
+
+                        <div class="progress-ring">
+
+                            <svg width="180" height="180">
+
+                                <defs>
+
+                                    <linearGradient id="gradient">
+
+                                        <stop offset="0%" stop-color="#4A7DFF" />
+
+                                        <stop offset="50%" stop-color="#55D6FF" />
+
+                                        <stop offset="100%" stop-color="#E23A8E" />
+
+                                    </linearGradient>
+
+                                </defs>
+
+                                <circle class="progress-bg" cx="90" cy="90" r="70">
+                                </circle>
+
+                                <circle class="progress-fill" cx="90" cy="90" r="70">
+                                </circle>
+
+                            </svg>
+
+                            <div class="progress-text">
+
+                                <h2>88%</h2>
+
+                                <span>Efficiency</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="productivity-right">
+
+                        <div class="metric-card">
+                            <h3>Tasks Completed</h3>
+                            <p>15</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h3>Pending Tasks</h3>
+                            <p>6</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h3>Hours Worked</h3>
+                            <p>7h 32m</p>
+                        </div>
+
+                        <div class="metric-card">
+                            <h3>Efficiency</h3>
+                            <p>88%</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/todo.js"></script>
+
+</body>
+
+</html>

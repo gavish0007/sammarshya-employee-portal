@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammarshya Employee Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo-section">
+
+                <img src="assets\logo\logo.jpeg" alt="Sammarshya Logo">
+
+
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item active">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    To Do
+                </a>
+
+                <a href="attendance.html" class="menu-item">
+                    <i class="fa-solid fa-clock"></i>
+
+                    Attendance
+                </a>
+
+                <a href="leave.html" class="menu-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Leave
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- Main Section -->
+        <main class="main-content">
+
+            <!-- Navbar -->
+            <header class="navbar">
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <div class="nav-right">
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            G
+                        </div>
+
+                        <span>Gavish</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Page Content -->
+            <section class="content">
+
+                <!-- Hero Banner -->
+                <div class="hero-banner">
+
+                    <h1>Good Evening, Gavish </h1>
+
+                    <p>
+                        Welcome to Sammarshya Employee Portal
+                    </p>
+
+                </div>
+
+                <!-- Quick Access -->
+
+                <div class="quick-access">
+
+                    <div class="quick-card">
+                        <i class="fa-solid fa-clock"></i>
+                        <h3>Attendance</h3>
+                    </div>
+
+                    <div class="quick-card">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <h3>Leave</h3>
+                    </div>
+
+                    <div class="quick-card">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h3>To Do</h3>
+                    </div>
+
+                    <div class="quick-card">
+                        <i class="fa-solid fa-user"></i>
+                        <h3>Profile</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- Row 1 -->
+
+                <div class="dashboard-grid">
+
+                    <div class="panel attendance-panel">
+
+                        <div class="session-header">
+
+                            <h2>Work Session</h2>
+
+                            <span class="live-badge">
+                                ● Live
+                            </span>
+
+                        </div>
+
+                        <p class="session-date">
+                            Friday, 19 June 2026
+                        </p>
+
+                        <div class="timer-section">
+
+                            <p>Today's Work Hours</p>
+
+                            <h1 id="work-timer">
+                                07:32:15
+                            </h1>
+
+                        </div>
+
+                        <div class="progress-container">
+
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+
+                            <span>78%</span>
+
+                        </div>
+
+                        <div class="session-info">
+
+                            <p>
+                                <strong>Sign In:</strong>
+                                09:00 AM
+                            </p>
+
+                            <p>
+                                <strong>Target End:</strong>
+                                06:00 PM
+                            </p>
+
+                        </div>
+
+                        <button class="session-btn">
+                            Sign Out
+                        </button>
+
+                    </div>
+
+                    <div class="panel holiday-panel">
+
+                        <h2>Upcoming Holidays</h2>
+
+                        <ul>
+                            <li>15 Aug - Independence Day</li>
+                            <li>2 Oct - Gandhi Jayanti</li>
+                            <li>25 Dec - Christmas</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- Row 2 -->
+
+                <div class="dashboard-grid">
+
+                    <div class="panel track-panel">
+
+                        <h2>
+
+                            Employee Overview
+                        </h2>
+
+                        <p><strong>Department:</strong> Engineering</p>
+
+                        <p><strong>Designation:</strong> Frontend Intern</p>
+
+                        <p><strong>Employee ID:</strong> TISPL/INT00057</p>
+
+                        <p><strong>Joining Date:</strong> 01 June 2026</p>
+
+                    </div>
+
+                    <div class="panel announcement-panel">
+
+                        <h2>Announcements</h2>
+
+                        <ul>
+                            <li>New Leave Policy Released</li>
+                            <li>Independence Day Celebration</li>
+                            <li>Quarterly Review Meeting</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

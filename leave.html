@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management | Sammarshya Employee Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leave.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo-section">
+                <img src="assets/logo/logo.jpeg" alt="Logo">
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+
+                <a href="todo.html" class="menu-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    To Do
+                </a>
+
+                <a href="attendance.html" class="menu-item">
+                    <i class="fa-solid fa-clock"></i>
+                    Attendance
+                </a>
+
+                <a href="leave.html" class="menu-item active">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Leave
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- NAVBAR -->
+
+            <header class="navbar">
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search leave requests...">
+                </div>
+
+                <div class="nav-right">
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            G
+                        </div>
+
+                        <span>Gavish</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- PAGE CONTENT -->
+
+            <section class="content">
+
+                <!-- HERO -->
+
+                <div class="hero-banner">
+
+                    <h1>Leave Management</h1>
+
+                    <p>
+                        Apply, monitor and manage your leave requests efficiently.
+                    </p>
+
+                </div>
+
+                <!-- LEAVE BALANCE -->
+
+                <div class="leave-balance">
+
+                    <div class="balance-card casual">
+
+                        <i class="fa-solid fa-umbrella-beach"></i>
+
+                        <h3>Casual Leave</h3>
+
+                        <h2>10</h2>
+
+                        <p>Available Days</p>
+
+                    </div>
+
+                    <div class="balance-card sick">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                        <h3>Sick Leave</h3>
+
+                        <h2>05</h2>
+
+                        <p>Available Days</p>
+
+                    </div>
+
+                    <div class="balance-card earned">
+
+                        <i class="fa-solid fa-award"></i>
+
+                        <h3>Earned Leave</h3>
+
+                        <h2>12</h2>
+
+                        <p>Available Days</p>
+
+                    </div>
+
+                    <div class="balance-card total">
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                        <h3>Total Balance</h3>
+
+                        <h2>27</h2>
+
+                        <p>Days Remaining</p>
+
+                    </div>
+
+                </div>
+
+                <!-- APPLY LEAVE + TEAM STATUS -->
+
+                <div class="leave-top-grid">
+
+                    <!-- LEFT SIDE -->
+
+                    <div class="leave-form-card">
+
+                        <h2>Apply Leave</h2>
+
+                        <div class="leave-form">
+
+                            <select>
+                                <option>Select Leave Type</option>
+                                <option>Casual Leave</option>
+                                <option>Sick Leave</option>
+                                <option>Earned Leave</option>
+                            </select>
+
+                            <div class="date-group">
+
+                                <div class="date-field">
+                                    <label>From Date</label>
+                                    <input type="date">
+                                </div>
+
+                                <div class="date-field">
+                                    <label>To Date</label>
+                                    <input type="date">
+                                </div>
+
+                            </div>
+
+                            <textarea rows="5" placeholder="Reason for Leave"></textarea>
+
+                            <button>
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Submit Request
+                            </button>
+
+                        </div>
+
+                        <div class="approval-timeline">
+
+                            <div class="step active">Applied</div>
+
+                            <div class="line"></div>
+
+                            <div class="step active">Manager Review</div>
+
+                            <div class="line"></div>
+
+                            <div class="step">HR Approval</div>
+
+                            <div class="line"></div>
+
+                            <div class="step">Completed</div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT SIDE -->
+
+                    <div class="team-leave-card">
+
+                        <h2>Employees On Leave Today</h2>
+
+                        <div class="employee-item">
+                            <i class="fa-solid fa-user"></i>
+                            Rahul Sharma
+                        </div>
+
+                        <div class="employee-item">
+                            <i class="fa-solid fa-user"></i>
+                            Priya Singh
+                        </div>
+
+                        <div class="employee-item">
+                            <i class="fa-solid fa-user"></i>
+                            Amit Verma
+                        </div>
+
+                        <div class="employee-item">
+                            <i class="fa-solid fa-user"></i>
+                            Sneha Kapoor
+                        </div>
+
+                        <hr style="margin:20px 0;">
+
+                        <h3>Recent Activity</h3>
+
+                        <div class="activity-item approved-act">
+                            ✔ Sick Leave Approved
+                        </div>
+
+                        <div class="activity-item pending-act">
+                            ⏳ Casual Leave Pending
+                        </div>
+
+                        <div class="activity-item rejected-act">
+                            ✖ Earned Leave Rejected
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CALENDAR + ANALYTICS -->
+
+                <div class="leave-middle-grid">
+
+                    <!-- LEAVE CALENDAR -->
+
+                    <div class="calendar-card">
+
+                        <h2>Leave Calendar</h2>
+
+                        <div class="leave-calendar">
+
+                            <div class="calendar-header">
+
+                                <button>
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+
+                                <h3>August 2026</h3>
+
+                                <button>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="calendar-days">
+
+                                <div>Sun</div>
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+
+                            </div>
+
+                            <div class="calendar-grid">
+
+                                <div class="empty"></div>
+                                <div class="empty"></div>
+
+                                <div>1</div>
+                                <div>2</div>
+                                <div class="leave-approved">3</div>
+                                <div>4</div>
+                                <div>5</div>
+
+                                <div>6</div>
+                                <div>7</div>
+                                <div class="leave-pending">8</div>
+                                <div>9</div>
+                                <div>10</div>
+                                <div>11</div>
+                                <div>12</div>
+
+                                <div class="leave-rejected">13</div>
+                                <div>14</div>
+                                <div>15</div>
+                                <div>16</div>
+                                <div>17</div>
+                                <div>18</div>
+                                <div>19</div>
+
+                                <div>20</div>
+                                <div>21</div>
+                                <div>22</div>
+                                <div>23</div>
+                                <div>24</div>
+                                <div>25</div>
+                                <div>26</div>
+
+                                <div>27</div>
+                                <div>28</div>
+                                <div>29</div>
+                                <div>30</div>
+                                <div>31</div>
+
+                            </div>
+                            <div class="leave-legend">
+
+                                <div class="legend-item">
+                                    <span class="legend-box approved-box"></span>
+                                    <span>Approved Leave</span>
+                                </div>
+
+                                <div class="legend-item">
+                                    <span class="legend-box pending-box"></span>
+                                    <span>Pending Approval</span>
+                                </div>
+
+                                <div class="legend-item">
+                                    <span class="legend-box rejected-box"></span>
+                                    <span>Rejected Leave</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LEAVE ANALYTICS -->
+
+                    <div class="summary-card">
+
+                        <h2>Leave Analytics</h2>
+
+                        <div class="analytics-circle">
+
+                            <svg width="180" height="180">
+
+                                <defs>
+
+                                    <linearGradient id="leaveGradient">
+
+                                        <stop offset="0%" stop-color="#4A7DFF" />
+
+                                        <stop offset="50%" stop-color="#55D6FF" />
+
+                                        <stop offset="100%" stop-color="#E23A8E" />
+
+                                    </linearGradient>
+
+                                </defs>
+
+                                <circle class="analytics-bg" cx="90" cy="90" r="70">
+                                </circle>
+
+                                <circle class="analytics-fill" cx="90" cy="90" r="70">
+                                </circle>
+
+                            </svg>
+
+                            <div class="circle-inner">
+
+                                <h2>75%</h2>
+
+                                <span>Used</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="analytics-stats">
+
+                            <div class="analytics-row">
+                                <span>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    Approved
+                                </span>
+                                <strong>06</strong>
+                            </div>
+
+                            <div class="analytics-row">
+                                <span>
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                    Pending
+                                </span>
+                                <strong>02</strong>
+                            </div>
+
+                            <div class="analytics-row">
+                                <span>
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    Rejected
+                                </span>
+                                <strong>01</strong>
+                            </div>
+
+                            <div class="analytics-row">
+                                <span>
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                    Used Leaves
+                                </span>
+                                <strong>09</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- LEAVE HISTORY -->
+
+                    <div class="history-card">
+
+                        <div class="history-header">
+
+                            <h2>Leave History</h2>
+
+                            <button>
+                                Export
+                            </button>
+
+                        </div>
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Leave Type</th>
+
+                                    <th>From</th>
+
+                                    <th>To</th>
+
+                                    <th>Days</th>
+
+                                    <th>Status</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Sick Leave</td>
+
+                                    <td>12 Jun 2026</td>
+
+                                    <td>13 Jun 2026</td>
+
+                                    <td>2</td>
+
+                                    <td>
+                                        <span class="approved">
+                                            Approved
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="view-btn">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>Casual Leave</td>
+
+                                    <td>20 Jun 2026</td>
+
+                                    <td>20 Jun 2026</td>
+
+                                    <td>1</td>
+
+                                    <td>
+                                        <span class="pending">
+                                            Pending
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="view-btn">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>Earned Leave</td>
+
+                                    <td>28 Jun 2026</td>
+
+                                    <td>30 Jun 2026</td>
+
+                                    <td>3</td>
+
+                                    <td>
+                                        <span class="rejected">
+                                            Rejected
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="view-btn">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/leave.js"></script>
+
+</body>
+
+</html>
