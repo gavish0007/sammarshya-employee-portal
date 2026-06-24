@@ -245,3 +245,56 @@
 .session-btn:hover {
     transform: translateY(-2px);
 }
+
+.quick-card {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quick-card:hover {
+    transform: translateY(-6px);
+}
+
+.quick-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.quick-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+    transition: .3s;
+}
+
+.quick-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.quick-card {
+    position: relative;
+    z-index: 999;
+}

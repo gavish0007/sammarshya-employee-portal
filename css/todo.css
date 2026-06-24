@@ -88,14 +88,34 @@
     gap: 15px;
 }
 
-.task-form input {
-    flex: 1;
+.task-form input,
+.task-form textarea,
+.task-form select {
 
-    padding: 12px;
+    width: 100%;
 
-    border: 1px solid #dcdfe6;
+    padding: 14px;
 
-    border-radius: 10px;
+    border: 1px solid #E5EAF5;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+
+    border-color: #4A7DFF;
+
+    box-shadow: 0 0 0 3px rgba(74, 125, 255, 0.1);
 }
 
 .task-form button {
@@ -581,4 +601,120 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.delete-btn {
+
+    margin-top: 12px;
+
+    width: 100%;
+
+    border: none;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: #FFE2E2;
+
+    color: #D63939;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: #ffd3d3;
+}
+
+.task-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.complete-btn {
+
+    flex: 1;
+
+    border: none;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: #DFF7E8;
+
+    color: #22A060;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.complete-btn:hover {
+
+    transform: translateY(-2px);
+}
+
+.task-form textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #E5EAF5;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    resize: vertical;
+
+    min-height: 90px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.task-form textarea:focus {
+
+    border-color: #4A7DFF;
+
+    box-shadow: 0 0 0 3px rgba(74, 125, 255, 0.1);
+}
+
+.dragging {
+
+    opacity: 0.5;
+
+    transform: rotate(3deg);
+
+}
+
+.task-column {
+
+    transition: 0.3s;
+}
+
+.task-column.drag-over {
+
+    background: #F7FAFF;
+
+    border: 2px dashed #4A7DFF;
+
 }

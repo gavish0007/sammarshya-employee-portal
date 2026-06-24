@@ -96,29 +96,31 @@
 
                 </div>
 
+
+
                 <!-- Quick Access -->
 
                 <div class="quick-access">
 
-                    <div class="quick-card">
+                    <a href="attendance.html" class="quick-card">
                         <i class="fa-solid fa-clock"></i>
                         <h3>Attendance</h3>
-                    </div>
+                    </a>
 
-                    <div class="quick-card">
+                    <a href="leave.html" class="quick-card">
                         <i class="fa-solid fa-calendar-days"></i>
                         <h3>Leave</h3>
-                    </div>
+                    </a>
 
-                    <div class="quick-card">
+                    <a href="todo.html" class="quick-card">
                         <i class="fa-solid fa-list-check"></i>
                         <h3>To Do</h3>
-                    </div>
+                    </a>
 
-                    <div class="quick-card">
+                    <a href="#" class="quick-card">
                         <i class="fa-solid fa-user"></i>
                         <h3>Profile</h3>
-                    </div>
+                    </a>
 
                 </div>
 
@@ -133,13 +135,13 @@
 
                             <h2>Work Session</h2>
 
-                            <span class="live-badge">
-                                ● Live
+                            <span class="live-badge" id="sessionStatus">
+                                ● Offline
                             </span>
 
                         </div>
 
-                        <p class="session-date">
+                        <p class="session-date" id="currentDate">
                             Friday, 19 June 2026
                         </p>
 
@@ -148,7 +150,7 @@
                             <p>Today's Work Hours</p>
 
                             <h1 id="work-timer">
-                                07:32:15
+                                00:00:00
                             </h1>
 
                         </div>
@@ -156,10 +158,14 @@
                         <div class="progress-container">
 
                             <div class="progress-bar">
-                                <div class="progress-fill"></div>
+
+                                <div class="progress-fill" id="progressFill"></div>
+
                             </div>
 
-                            <span>78%</span>
+                            <span id="progressPercent">
+                                0%
+                            </span>
 
                         </div>
 
@@ -167,18 +173,18 @@
 
                             <p>
                                 <strong>Sign In:</strong>
-                                09:00 AM
+                                <span id="signin-time">--</span>
                             </p>
 
                             <p>
                                 <strong>Target End:</strong>
-                                06:00 PM
+                                <span id="target-time">--</span>
                             </p>
 
                         </div>
 
-                        <button class="session-btn">
-                            Sign Out
+                        <button class="session-btn" id="sessionBtn">
+                            Login
                         </button>
 
                     </div>

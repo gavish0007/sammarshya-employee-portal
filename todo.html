@@ -104,17 +104,17 @@
 
                     <div class="stat-card total">
                         <h3>Total Tasks</h3>
-                        <h2>24</h2>
+                        <h2 id="totalTasksCount">0</h2>
                     </div>
 
                     <div class="stat-card completed">
                         <h3>Completed</h3>
-                        <h2>15</h2>
+                        <h2 id="completedTasksCount">0</h2>
                     </div>
 
                     <div class="stat-card progress">
                         <h3>In Progress</h3>
-                        <h2>6</h2>
+                        <h2 id="pendingTasksCount">0</h2>
                     </div>
 
                     <div class="stat-card overdue">
@@ -132,12 +132,16 @@
 
                     <div class="task-form">
 
-                        <input type="text" placeholder="Task Title">
+                        <input type="text" id="taskInput" placeholder="Task Title">
 
-                        <input type="date">
+                        <textarea id="taskDescription" placeholder="Task Description">
+</textarea>
 
-                        <button>Add Task</button>
+                        <input type="date" id="taskDate">
 
+                        <button id="addTaskBtn">
+                            Add Task
+                        </button>
                     </div>
 
                 </div>
@@ -147,8 +151,7 @@
                 <div class="task-board">
 
                     <!-- Pending -->
-
-                    <div class="task-column">
+                    <div class="task-column dropzone" id="pendingColumn">
 
                         <h2>Pending</h2>
 
@@ -174,7 +177,7 @@
 
                         </div>
 
-                        <div class="task-card">
+                        <div class="task-card" draggable="true">
 
                             <h3>Meeting With Manager</h3>
 
@@ -200,11 +203,11 @@
 
                     <!-- In Progress -->
 
-                    <div class="task-column">
+                    <div class="task-column dropzone" id="progressColumn">
 
                         <h2>In Progress</h2>
 
-                        <div class="task-card">
+                        <div class="task-card" draggable="true">
 
                             <h3>To Do Dashboard</h3>
 
@@ -230,11 +233,12 @@
 
                     <!-- Completed -->
 
-                    <div class="task-column">
+                    <!-- Completed -->
+
+                    <div class="task-column dropzone" id="completedColumn">
 
                         <h2>Completed</h2>
-
-                        <div class="task-card">
+                        <div class="task-card" draggable="true">
 
                             <h3>Project Structure Setup</h3>
 
