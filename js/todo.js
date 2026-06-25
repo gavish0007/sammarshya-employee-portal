@@ -1,162 +1,243 @@
 const taskInput = document.getElementById("taskInput");
+const taskDescription = document.getElementById("taskDescription");
 const taskDate = document.getElementById("taskDate");
 const addTaskBtn = document.getElementById("addTaskBtn");
+
 const pendingColumn = document.getElementById("pendingColumn");
-const completedColumn =
-    document.getElementById("completedColumn");
-const totalTasksCount =
-    document.getElementById("totalTasksCount");
+const completedColumn = document.getElementById("completedColumn");
+const inProgressColumn = document.querySelectorAll(".task-column")[1];
 
-const completedTasksCount =
-    document.getElementById("completedTasksCount");
+const totalTasksCount = document.getElementById("totalTasksCount");
+const completedTasksCount = document.getElementById("completedTasksCount");
+const pendingTasksCount = document.getElementById("pendingTasksCount");
 
-const pendingTasksCount =
-    document.getElementById("pendingTasksCount");
-const taskDescription =
-    document.getElementById("taskDescription");
+let draggedTask = null;
+
+
+/* ADD DRAG FUNCTIONALITY TO A TASK CARD */
+
+function makeTaskDraggable(taskCard) {
+    taskCard.setAttribute("draggable", "true");
+
+    taskCard.addEventListener("dragstart", () => {
+        draggedTask = taskCard;
+        taskCard.classList.add("dragging");
+    });
+
+    taskCard.addEventListener("dragend", () => {
+        taskCard.classList.remove("dragging");
+        draggedTask = null;
+    });
+}
+
+
+/* ADD COMPLETE + DELETE BUTTON EVENTS */
+
+function addTaskActions(taskCard) {
+    const deleteBtn = taskCard.querySelector(".delete-btn");
+    const completeBtn = taskCard.querySelector(".complete-btn");
+
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", () => {
+            taskCard.remove();
+            updateStats();
+            updateProductivity();
+        });
+    }
+
+    if (completeBtn) {
+        completeBtn.addEventListener("click", () => {
+            completeBtn.remove();
+
+            const priority = taskCard.querySelector(".priority");
+
+            priority.textContent = "Completed";
+            priority.className = "priority low";
+
+            const dueDate = taskCard.querySelector(".due-date");
+            dueDate.textContent = "Done";
+
+            completedColumn.appendChild(taskCard);
+
+            updateStats();
+            updateProductivity();
+        });
+    }
+}
+
+
+/* CREATE NEW TASK */
 
 addTaskBtn.addEventListener("click", () => {
-
     const title = taskInput.value.trim();
-    const description =
-        taskDescription.value.trim();
+    const description = taskDescription.value.trim();
     const dueDate = taskDate.value;
 
     if (title === "" || description === "") {
-        alert("Please enter title and description.");
+        alert("Please enter task title and description.");
         return;
     }
 
     const taskCard = document.createElement("div");
     taskCard.classList.add("task-card");
+
     taskCard.innerHTML = `
-    <h3>${title}</h3>
+        <h3>${title}</h3>
 
-   <p>
-    ${description}
-</p>
+        <p>${description}</p>
 
-    <div class="task-footer">
+        <div class="task-footer">
+            <span class="priority high">High Priority</span>
 
-        <span class="priority high">
-            High Priority
-        </span>
+            <span class="due-date">
+                ${dueDate || "No Date"}
+            </span>
+        </div>
 
-        <span class="due-date">
-            ${dueDate || "No Date"}
-        </span>
+        <div class="task-actions">
+            <button class="complete-btn">
+                <i class="fa-solid fa-check"></i>
+                Complete
+            </button>
 
-    </div>
-
-    <div class="task-actions">
-
-        <button class="complete-btn">
-            <i class="fa-solid fa-check"></i>
-            Complete
-        </button>
-
-        <button class="delete-btn">
-            <i class="fa-solid fa-trash"></i>
-            Delete
-        </button>
-
-    </div>
-`;
+            <button class="delete-btn">
+                <i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+        </div>
+    `;
 
     pendingColumn.appendChild(taskCard);
-    updateStats();
 
-    const deleteBtn =
-        taskCard.querySelector(".delete-btn");
+    makeTaskDraggable(taskCard);
+    addTaskActions(taskCard);
 
-    deleteBtn.addEventListener("click", () => {
-
-        taskCard.remove();
-        updateStats();
-    });
-    const completeBtn =
-        taskCard.querySelector(".complete-btn");
-
-    completeBtn.addEventListener("click", () => {
-
-        completeBtn.remove();
-
-        taskCard.querySelector(".priority").textContent =
-            "Completed";
-
-        taskCard.querySelector(".priority").className =
-            "priority low";
-
-        completedColumn.appendChild(taskCard);
-        updateStats();
-    });
     taskInput.value = "";
-    taskDate.value = "";
     taskDescription.value = "";
-});
-function updateStats() {
+    taskDate.value = "";
 
-    const totalTasks =
-        document.querySelectorAll(".task-card").length;
+    updateStats();
+    updateProductivity();
+});
+
+
+/* DRAG AND DROP COLUMNS */
+
+const columns = document.querySelectorAll(".task-column");
+
+columns.forEach(column => {
+    column.addEventListener("dragover", (event) => {
+        event.preventDefault();
+    });
+
+    column.addEventListener("drop", () => {
+        if (draggedTask) {
+            column.appendChild(draggedTask);
+
+            updateStats();
+            updateProductivity();
+        }
+    });
+});
+
+
+/* UPDATE TOP STATISTICS */
+
+function updateStats() {
+    const totalTasks = document.querySelectorAll(".task-card").length;
 
     const completedTasks =
         completedColumn.querySelectorAll(".task-card").length;
 
+    const pendingTasks = totalTasks - completedTasks;
+
+    totalTasksCount.textContent = totalTasks;
+    completedTasksCount.textContent = completedTasks;
+    pendingTasksCount.textContent = pendingTasks;
+}
+
+
+/* UPDATE PRODUCTIVITY SECTION */
+
+function updateProductivity() {
     const pendingTasks =
-        totalTasks - completedTasks;
+        pendingColumn.querySelectorAll(".task-card").length;
 
-    totalTasksCount.textContent =
-        totalTasks;
+    const inProgressTasks =
+        inProgressColumn.querySelectorAll(".task-card").length;
 
-    completedTasksCount.textContent =
+    const completedTasks =
+        completedColumn.querySelectorAll(".task-card").length;
+
+    const totalTasks =
+        pendingTasks + inProgressTasks + completedTasks;
+
+    const pendingAndProgress =
+        pendingTasks + inProgressTasks;
+
+    let efficiency = 0;
+
+    if (totalTasks > 0) {
+        efficiency = Math.round(
+            (completedTasks / totalTasks) * 100
+        );
+    }
+
+    document.getElementById("completedMetric").textContent =
         completedTasks;
 
-    pendingTasksCount.textContent =
-        pendingTasks;
+    document.getElementById("pendingMetric").textContent =
+        pendingAndProgress;
+
+    document.getElementById("efficiencyMetric").textContent =
+        efficiency + "%";
+
+    document.getElementById("efficiencyPercent").textContent =
+        efficiency + "%";
+
+    const ring = document.getElementById("productivityRing");
+
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+
+    const offset =
+        circumference - (efficiency / 100) * circumference;
+
+    ring.style.strokeDasharray = circumference;
+    ring.style.strokeDashoffset = offset;
 }
-updateStats();
 
-let draggedTask = null;
 
-const taskCards =
+/* GET WORK HOURS FROM HOME PAGE */
+
+function updateHoursWorked() {
+    const savedSeconds =
+        Number(localStorage.getItem("workSeconds")) || 0;
+
+    const hours = Math.floor(savedSeconds / 3600);
+
+    const minutes = Math.floor(
+        (savedSeconds % 3600) / 60
+    );
+
+    document.getElementById("hoursWorkedMetric").textContent =
+        `${hours}h ${String(minutes).padStart(2, "0")}m`;
+}
+
+
+/* MAKE EXISTING TASKS WORK */
+
+const existingTaskCards =
     document.querySelectorAll(".task-card");
 
-taskCards.forEach(card => {
-
-    card.addEventListener("dragstart", () => {
-
-        draggedTask = card;
-
-        card.classList.add("dragging");
-
-    });
-
-    card.addEventListener("dragend", () => {
-
-        card.classList.remove("dragging");
-
-    });
-
+existingTaskCards.forEach(taskCard => {
+    makeTaskDraggable(taskCard);
+    addTaskActions(taskCard);
 });
-const columns =
-    document.querySelectorAll(".task-column");
 
-columns.forEach(column => {
 
-    column.addEventListener("dragover", (e) => {
+/* INITIAL PAGE UPDATE */
 
-        e.preventDefault();
-
-    });
-
-    column.addEventListener("drop", () => {
-
-        if (draggedTask) {
-
-            column.appendChild(draggedTask);
-
-        }
-
-    });
-
-});
+updateStats();
+updateProductivity();
+updateHoursWorked();

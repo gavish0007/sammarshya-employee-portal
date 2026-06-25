@@ -326,23 +326,7 @@
     stroke-dashoffset: 53;
 }
 
-.progress-text {
 
-    position: absolute;
-
-    top: 50%;
-
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    font-size: 32px;
-
-    font-weight: bold;
-
-    color: #4A7DFF;
-}
 
 /* METRICS */
 
@@ -465,18 +449,6 @@
     transition: 1s ease;
 }
 
-.progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    font-size: 28px;
-    font-weight: 700;
-
-    color: #4A7DFF;
-}
 
 /* PRODUCTIVITY PANEL */
 
@@ -531,24 +503,10 @@
     transition: 1s ease;
 }
 
-.progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
-.progress-text h2 {
-    color: #4A7DFF;
-    font-size: 40px;
-    margin: 0;
-}
 
-.progress-text span {
-    color: #7A8599;
-    font-size: 14px;
-}
+
+
 
 .productivity-right {
     display: grid;
@@ -717,4 +675,273 @@
 
     border: 2px dashed #4A7DFF;
 
+}
+
+/* PRODUCTIVITY RING ALIGNMENT */
+
+.productivity-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.productivity-left>h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progress-ring {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.progress-ring svg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.progress-ring .progress-bg,
+.progress-ring .progress-fill {
+    fill: none;
+    stroke-width: 14;
+}
+
+.progress-ring .progress-bg {
+    stroke: #E9EEF8;
+}
+
+.progress-ring .progress-fill {
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    stroke-dasharray: 439.82;
+    stroke-dashoffset: 439.82;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+
+
+
+
+
+
+.productivity-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.productivity-left>h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progress-ring {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring svg {
+    width: 180px;
+    height: 180px;
+    transform: rotate(-90deg);
+}
+
+.progress-bg,
+.progress-fill {
+    fill: none;
+    stroke-width: 16;
+    stroke-linecap: round;
+}
+
+.progress-bg {
+    stroke: #e9eef8;
+}
+
+.progress-fill {
+    stroke: url(#gradient);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 330;
+    transition: stroke-dashoffset 0.4s ease;
+}
+
+
+
+
+
+.progress-text span {
+    margin-top: 6px;
+    color: #7A8599;
+    font-weight: 600;
+}
+
+/* =========================
+   PRODUCTIVITY PANEL
+========================= */
+
+.productivity-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.productivity-left,
+.productivity-right {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* LEFT PRODUCTIVITY CARD */
+
+.productivity-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.productivity-left>h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2F3542;
+}
+
+/* PRODUCTIVITY RING */
+
+.progress-ring {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring svg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.progress-bg,
+.progress-fill {
+    fill: none;
+    stroke-width: 14;
+}
+
+.progress-bg {
+    stroke: #E9EEF8;
+}
+
+.progress-fill {
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    stroke-dasharray: 439.82;
+    stroke-dashoffset: 439.82;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+
+
+
+
+/* RIGHT METRIC CARDS */
+
+.productivity-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.metric-card {
+    background: #F8FAFF;
+    border-left: 5px solid #4A7DFF;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.metric-card h3 {
+    font-size: 14px;
+    color: #7A8599;
+    margin-bottom: 10px;
+}
+
+.metric-card p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2F3542;
+}
+
+/* RESPONSIVE PRODUCTIVITY SECTION */
+
+@media (max-width: 800px) {
+    .productivity-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+.task-column.drag-over {
+    background: #F7FAFF;
+    border: 2px dashed #4A7DFF;
+}
+
+/* FINAL PRODUCTIVITY RING FIX */
+
+.progress-ring {
+    position: relative !important;
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto !important;
+}
+
+.progress-ring svg {
+    width: 180px !important;
+    height: 180px !important;
+    display: block !important;
+    transform: rotate(-90deg);
+}
+
+.progress-text {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 180px !important;
+    height: 180px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+}
+
+.progress-text h2 {
+    margin: 0 !important;
+    font-size: 42px !important;
+    line-height: 1 !important;
+    color: #4A7DFF !important;
+}
+
+.progress-text span {
+    margin-top: 7px !important;
+    color: #7A8599 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
 }

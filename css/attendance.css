@@ -804,3 +804,73 @@ textarea:focus {
     background: #DCE7FF;
     border: 1px solid #4A7DFF;
 }
+
+#attendanceProgressFill {
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.analytics-fill {
+    fill: none;
+    stroke: url(#attendanceGradient);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 90px 90px;
+    transition: stroke-dashoffset 0.4s ease;
+}
+
+.analytics-bg {
+    fill: none;
+    stroke: #E9EEF8;
+    stroke-width: 14;
+}
+
+.today-day {
+    background: #DCE7FF !important;
+    color: #2F5FD0 !important;
+    border: 2px solid #4A7DFF;
+}
+
+.calendar-grid .empty {
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-grid .empty:hover {
+    transform: none;
+}
+
+/* Logged-out session status */
+
+.session-status:has(#statusText) {
+    transition: 0.3s ease;
+}
+
+.online-dot:not(.active) {
+    background: #9AA4B2;
+    animation: none;
+}
+
+.online-dot.active {
+    background: #22A060;
+    animation: pulse 1.5s infinite;
+}
+
+/* Dynamic calendar date styles */
+
+.today-day {
+    background: #DCE7FF !important;
+    color: #2E63D6;
+    border: 2px solid #4A7DFF;
+}
+
+.future-day {
+    background: #F7F9FC !important;
+    color: #B0B8C7;
+    cursor: default !important;
+}
+
+.future-day:hover {
+    transform: none !important;
+}

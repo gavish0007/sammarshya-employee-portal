@@ -52,14 +52,15 @@ function startTimer() {
         const elapsed =
             Math.floor((Date.now() - loginTimestamp) / 1000);
 
-        timer.textContent =
-            formatTime(elapsed);
+        timer.textContent = formatTime(elapsed);
+
+        /* Add this line here */
+        localStorage.setItem("workSeconds", elapsed);
 
         updateProgress(elapsed);
 
     }, 1000);
 }
-
 /* LOGIN / LOGOUT */
 
 sessionBtn.addEventListener("click", () => {
@@ -104,7 +105,7 @@ sessionBtn.addEventListener("click", () => {
     else {
 
         clearInterval(timerInterval);
-
+        localStorage.setItem("workSeconds", 0);
         sessionBtn.textContent = "Login";
 
         sessionStatus.textContent = "● Offline";

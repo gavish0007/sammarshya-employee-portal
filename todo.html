@@ -126,7 +126,7 @@
 
                 <!-- ADD TASK -->
 
-                <div class="add-task-card">
+                <div class="task-card" draggable="true">
 
                     <h2>Create New Task</h2>
 
@@ -155,7 +155,7 @@
 
                         <h2>Pending</h2>
 
-                        <div class="task-card">
+                        <div class="task-card" draggable="true">
 
                             <h3>Finish Employee Portal UI</h3>
 
@@ -274,62 +274,51 @@
 
                         <div class="progress-ring">
 
-                            <svg width="180" height="180">
+                            <svg width="180" height="180" viewBox="0 0 180 180">
 
                                 <defs>
-
                                     <linearGradient id="gradient">
-
                                         <stop offset="0%" stop-color="#4A7DFF" />
-
                                         <stop offset="50%" stop-color="#55D6FF" />
-
                                         <stop offset="100%" stop-color="#E23A8E" />
-
                                     </linearGradient>
-
                                 </defs>
 
-                                <circle class="progress-bg" cx="90" cy="90" r="70">
-                                </circle>
+                                <circle class="progress-bg" cx="90" cy="90" r="70"></circle>
 
-                                <circle class="progress-fill" cx="90" cy="90" r="70">
+                                <circle id="productivityRing" class="progress-fill" cx="90" cy="90" r="70">
                                 </circle>
 
                             </svg>
 
                             <div class="progress-text">
-
-                                <h2>88%</h2>
-
+                                <h2 id="efficiencyPercent">25%</h2>
                                 <span>Efficiency</span>
-
                             </div>
 
                         </div>
 
                     </div>
-
                     <div class="productivity-right">
 
                         <div class="metric-card">
                             <h3>Tasks Completed</h3>
-                            <p>15</p>
+                            <p id="completedMetric">0</p>
                         </div>
 
                         <div class="metric-card">
                             <h3>Pending Tasks</h3>
-                            <p>6</p>
+                            <p id="pendingMetric">0</p>
                         </div>
 
                         <div class="metric-card">
                             <h3>Hours Worked</h3>
-                            <p>7h 32m</p>
+                            <p id="hoursWorkedMetric">7h 32m</p>
                         </div>
 
                         <div class="metric-card">
                             <h3>Efficiency</h3>
-                            <p>88%</p>
+                            <p id="efficiencyMetric">0%</p>
                         </div>
 
                     </div>
