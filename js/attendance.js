@@ -373,19 +373,18 @@ const nextMonthBtn = document.getElementById("nextMonthBtn");
 
 let selectedCalendarDate = new Date();
 
-
 function getCalendarDateKey(year, month, day) {
     return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
-
 function renderAttendanceCalendar() {
+
+    if (!calendarGrid || !calendarMonthYear) return;
 
     const year = selectedCalendarDate.getFullYear();
     const month = selectedCalendarDate.getMonth();
 
     const today = new Date();
-
     const history = getWorkHistory();
 
     calendarMonthYear.textContent =
@@ -397,63 +396,56 @@ function renderAttendanceCalendar() {
     calendarGrid.innerHTML = "";
 
     const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
 
-    const totalDays =
-        new Date(year, month + 1, 0).getDate();
-
-    /* Empty spaces before day 1 */
+    // Empty cells before first date
     for (let i = 0; i < firstDay; i++) {
 
-        const emptyBox = document.createElement("div");
-        emptyBox.classList.add("empty");
+        const empty = document.createElement("div");
+        empty.className = "empty";
 
-        calendarGrid.appendChild(emptyBox);
+        calendarGrid.appendChild(empty);
     }
 
-    /* Create each date */
+    // Dates
     for (let day = 1; day <= totalDays; day++) {
 
-        const dayBox = document.createElement("div");
+        const cell = document.createElement("div");
 
-        const dateKey =
-            getCalendarDateKey(year, month, day);
+        cell.className = "calendar-date";
 
-        dayBox.textContent = day;
+        cell.textContent = day;
+
+        const dateKey = getCalendarDateKey(year, month, day);
+
+        const currentDate = new Date(year, month, day);
 
         const isToday =
-            today.getFullYear() === year &&
-            today.getMonth() === month &&
-            today.getDate() === day;
+            currentDate.toDateString() === today.toDateString();
 
-        const isFutureDate =
-            new Date(year, month, day) >
+        const isFuture =
+            currentDate >
             new Date(
                 today.getFullYear(),
                 today.getMonth(),
                 today.getDate()
             );
 
-        /* If work hours exist, mark as Present */
         if (history[dateKey] && history[dateKey] > 0) {
-            dayBox.classList.add("present-day");
+            cell.classList.add("present-day");
         }
 
-        /* Highlight today's date */
         if (isToday) {
-            dayBox.classList.add("today-day");
+            cell.classList.add("today-day");
         }
 
-        /* Future dates should not show attendance colors */
-        if (isFutureDate) {
-            dayBox.classList.add("future-day");
+        if (isFuture) {
+            cell.classList.add("future-day");
         }
 
-        calendarGrid.appendChild(dayBox);
+        calendarGrid.appendChild(cell);
     }
 }
-
-
-/* Month navigation */
 
 prevMonthBtn.addEventListener("click", () => {
 
@@ -464,7 +456,6 @@ prevMonthBtn.addEventListener("click", () => {
     renderAttendanceCalendar();
 });
 
-
 nextMonthBtn.addEventListener("click", () => {
 
     selectedCalendarDate.setMonth(
@@ -474,5 +465,8 @@ nextMonthBtn.addEventListener("click", () => {
     renderAttendanceCalendar();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
 
-renderAttendanceCalendar();
+    renderAttendanceCalendar();
+
+});

@@ -108,7 +108,7 @@
 
                         <h3>Casual Leave</h3>
 
-                        <h2>10</h2>
+                        <h2 id="casualBalance">10</h2>
 
                         <p>Available Days</p>
 
@@ -120,7 +120,7 @@
 
                         <h3>Sick Leave</h3>
 
-                        <h2>05</h2>
+                        <h2 id="sickBalance">5</h2>
 
                         <p>Available Days</p>
 
@@ -132,7 +132,7 @@
 
                         <h3>Earned Leave</h3>
 
-                        <h2>12</h2>
+                        <h2 id="earnedBalance">12</h2>
 
                         <p>Available Days</p>
 
@@ -144,7 +144,7 @@
 
                         <h3>Total Balance</h3>
 
-                        <h2>27</h2>
+                        <h2 id="totalBalance">27</h2>
 
                         <p>Days Remaining</p>
 
@@ -164,32 +164,38 @@
 
                         <div class="leave-form">
 
-                            <select>
-                                <option>Select Leave Type</option>
+                            <select id="leaveType">
+
+                                <option value="">Select Leave Type</option>
                                 <option>Casual Leave</option>
                                 <option>Sick Leave</option>
                                 <option>Earned Leave</option>
+
                             </select>
 
                             <div class="date-group">
 
                                 <div class="date-field">
                                     <label>From Date</label>
-                                    <input type="date">
+                                    <input type="date" id="fromDate">
                                 </div>
 
                                 <div class="date-field">
                                     <label>To Date</label>
-                                    <input type="date">
+                                    <input type="date" id="toDate">
                                 </div>
 
                             </div>
 
-                            <textarea rows="5" placeholder="Reason for Leave"></textarea>
+                            <textarea id="leaveReason" rows="5" placeholder="Reason for Leave">
+    </textarea>
 
-                            <button>
+                            <button id="submitLeaveBtn">
+
                                 <i class="fa-solid fa-paper-plane"></i>
+
                                 Submit Request
+
                             </button>
 
                         </div>
@@ -274,15 +280,19 @@
 
                             <div class="calendar-header">
 
-                                <button>
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </button>
+                                <div class="calendar-header">
 
-                                <h3>August 2026</h3>
+                                    <button id="prevMonthBtn" type="button">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                    </button>
 
-                                <button>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
+                                    <h3 id="calendarMonthYear"></h3>
+
+                                    <button id="nextMonthBtn" type="button">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </button>
+
+                                </div>
 
                             </div>
 
@@ -298,48 +308,7 @@
 
                             </div>
 
-                            <div class="calendar-grid">
-
-                                <div class="empty"></div>
-                                <div class="empty"></div>
-
-                                <div>1</div>
-                                <div>2</div>
-                                <div class="leave-approved">3</div>
-                                <div>4</div>
-                                <div>5</div>
-
-                                <div>6</div>
-                                <div>7</div>
-                                <div class="leave-pending">8</div>
-                                <div>9</div>
-                                <div>10</div>
-                                <div>11</div>
-                                <div>12</div>
-
-                                <div class="leave-rejected">13</div>
-                                <div>14</div>
-                                <div>15</div>
-                                <div>16</div>
-                                <div>17</div>
-                                <div>18</div>
-                                <div>19</div>
-
-                                <div>20</div>
-                                <div>21</div>
-                                <div>22</div>
-                                <div>23</div>
-                                <div>24</div>
-                                <div>25</div>
-                                <div>26</div>
-
-                                <div>27</div>
-                                <div>28</div>
-                                <div>29</div>
-                                <div>30</div>
-                                <div>31</div>
-
-                            </div>
+                            <div class="calendar-grid" id="leaveCalendarGrid"></div>
                             <div class="leave-legend">
 
                                 <div class="legend-item">
@@ -413,7 +382,7 @@
                                     <i class="fa-solid fa-circle-check"></i>
                                     Approved
                                 </span>
-                                <strong>06</strong>
+                                <strong id="approvedCount">0</strong>
                             </div>
 
                             <div class="analytics-row">
@@ -421,7 +390,7 @@
                                     <i class="fa-solid fa-hourglass-half"></i>
                                     Pending
                                 </span>
-                                <strong>02</strong>
+                                <strong id="pendingCount">0</strong>
                             </div>
 
                             <div class="analytics-row">
@@ -429,7 +398,7 @@
                                     <i class="fa-solid fa-circle-xmark"></i>
                                     Rejected
                                 </span>
-                                <strong>01</strong>
+                                <strong id="rejectedCount">0</strong>
                             </div>
 
                             <div class="analytics-row">
@@ -437,7 +406,7 @@
                                     <i class="fa-solid fa-calendar-check"></i>
                                     Used Leaves
                                 </span>
-                                <strong>09</strong>
+                                <strong id="usedLeavesCount">0</strong>
                             </div>
 
                         </div>
@@ -479,73 +448,9 @@
 
                             </thead>
 
-                            <tbody>
+                            <tbody id="leaveHistoryBody">
 
-                                <tr>
-
-                                    <td>Sick Leave</td>
-
-                                    <td>12 Jun 2026</td>
-
-                                    <td>13 Jun 2026</td>
-
-                                    <td>2</td>
-
-                                    <td>
-                                        <span class="approved">
-                                            Approved
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button class="view-btn">
-                                            View
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-
-                                    <td>Casual Leave</td>
-
-                                    <td>20 Jun 2026</td>
-
-                                    <td>20 Jun 2026</td>
-
-                                    <td>1</td>
-
-                                    <td>
-                                        <span class="pending">
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button class="view-btn">
-                                            View
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-
-                                    <td>Earned Leave</td>
-
-                                    <td>28 Jun 2026</td>
-
-                                    <td>30 Jun 2026</td>
-
-                                    <td>3</td>
-
-                                    <td>
-                                        <span class="rejected">
-                                            Rejected
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button class="view-btn">
-                                            View
-                                        </button>
-                                    </td>
-                                </tr>
+                                <!-- Leave requests will be added automatically by JavaScript -->
 
                             </tbody>
 

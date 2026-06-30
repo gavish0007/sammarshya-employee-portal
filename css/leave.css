@@ -860,3 +860,101 @@ td {
     color: #7A8599;
     margin-bottom: 8px;
 }
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 8px;
+
+    justify-content: center;
+
+}
+
+.approve-btn {
+
+    background: #22A060;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+.reject-btn {
+
+    background: #E23A3A;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+.delete-btn {
+
+    background: #555;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+.status {
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+}
+
+.status.pending {
+
+    background: #FFF4D6;
+
+    color: #C88A00;
+
+}
+
+.status.approved {
+
+    background: #DFF7E8;
+
+    color: #22A060;
+
+}
+
+.status.rejected {
+
+    background: #FFE2E2;
+
+    color: #D63939;
+
+}
