@@ -351,6 +351,19 @@ logoutBtn.addEventListener("click", () => {
 
 
 /* Restore session after page refresh */
+const calendarGrid = document.getElementById("calendarGrid");
+
+const calendarMonthYear =
+    document.getElementById("calendarMonthYear");
+
+const prevMonthBtn =
+    document.getElementById("prevMonthBtn");
+
+const nextMonthBtn =
+    document.getElementById("nextMonthBtn");
+
+let selectedCalendarDate = new Date();
+
 
 const isLoggedIn =
     localStorage.getItem("attendanceLoggedIn") === "true";
@@ -365,13 +378,7 @@ if (isLoggedIn) {
    MONTHLY ATTENDANCE CALENDAR
 ========================= */
 
-const calendarGrid = document.getElementById("calendarGrid");
-const calendarMonthYear = document.getElementById("calendarMonthYear");
 
-const prevMonthBtn = document.getElementById("prevMonthBtn");
-const nextMonthBtn = document.getElementById("nextMonthBtn");
-
-let selectedCalendarDate = new Date();
 
 function getCalendarDateKey(year, month, day) {
     return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
