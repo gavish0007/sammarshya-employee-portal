@@ -8,8 +8,9 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/leave.css">
-
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/toast.css">
 </head>
 
 <body>
@@ -56,29 +57,31 @@
 
             <!-- NAVBAR -->
 
-            <header class="navbar">
+            <button id="menuToggle" class="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-                <div class="search-box">
-                    <input type="text" placeholder="Search leave requests...">
-                </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search leave requests...">
+            </div>
 
-                <div class="nav-right">
+            <div class="nav-right">
 
-                    <button class="icon-btn">
-                        <i class="fa-solid fa-bell"></i>
-                    </button>
+                <button class="icon-btn">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
 
-                    <div class="profile">
+                <div class="profile">
 
-                        <div class="avatar">
-                            G
-                        </div>
-
-                        <span>Gavish</span>
-
+                    <div class="avatar">
+                        G
                     </div>
 
+                    <span>Gavish</span>
+
                 </div>
+
+            </div>
 
             </header>
 
@@ -465,7 +468,8 @@
     </div>
 
     <script src="js/leave.js"></script>
-
+    <script src="js/responsive.js"></script>
+    <script src="js/toast.js"></script>
 </body>
 
 </html>

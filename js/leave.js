@@ -187,7 +187,7 @@ submitLeaveBtn.addEventListener("click", () => {
 
     ) {
 
-        alert("Please fill all fields.");
+        showToast("Please fill all fields.", "warning");
 
         return;
 
