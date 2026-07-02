@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/leave.css">
-    <link rel="stylesheet" href="css/responsive.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -51,37 +51,42 @@
 
         </aside>
 
+        <!-- Sidebar overlay (mobile/tablet) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- MAIN CONTENT -->
 
         <main class="main-content">
 
             <!-- NAVBAR -->
 
-            <button id="menuToggle" class="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <header class="navbar">
 
-            <div class="search-box">
-                <input type="text" placeholder="Search leave requests...">
-            </div>
-
-            <div class="nav-right">
-
-                <button class="icon-btn">
-                    <i class="fa-solid fa-bell"></i>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
                 </button>
 
-                <div class="profile">
-
-                    <div class="avatar">
-                        G
-                    </div>
-
-                    <span>Gavish</span>
-
+                <div class="search-box">
+                    <input type="text" placeholder="Search leave requests...">
                 </div>
 
-            </div>
+                <div class="nav-right">
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            G
+                        </div>
+
+                        <span>Gavish</span>
+
+                    </div>
+
+                </div>
 
             </header>
 
@@ -344,7 +349,7 @@
 
                         <div class="analytics-circle">
 
-                            <svg width="180" height="180">
+                            <svg width="180" height="180" viewBox="0 0 180 180">
 
                                 <defs>
 
@@ -429,35 +434,37 @@
 
                         </div>
 
-                        <table>
+                        <div class="table-scroll">
+                            <table>
 
-                            <thead>
+                                <thead>
 
-                                <tr>
+                                    <tr>
 
-                                    <th>Leave Type</th>
+                                        <th>Leave Type</th>
 
-                                    <th>From</th>
+                                        <th>From</th>
 
-                                    <th>To</th>
+                                        <th>To</th>
 
-                                    <th>Days</th>
+                                        <th>Days</th>
 
-                                    <th>Status</th>
+                                        <th>Status</th>
 
-                                    <th>Action</th>
+                                        <th>Action</th>
 
-                                </tr>
+                                    </tr>
 
-                            </thead>
+                                </thead>
 
-                            <tbody id="leaveHistoryBody">
+                                <tbody id="leaveHistoryBody">
 
-                                <!-- Leave requests will be added automatically by JavaScript -->
+                                    <!-- Leave requests will be added automatically by JavaScript -->
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
+                            </table>
+                        </div>
 
                     </div>
 
@@ -469,7 +476,7 @@
 
     <script src="js/leave.js"></script>
     <script src="js/responsive.js"></script>
-    <script src="js/toast.js"></script>
+
 </body>
 
 </html>

@@ -1,878 +1,401 @@
-/* ===========================
-   TABLETS
-=========================== */
+/* ==========================================================================
+   RESPONSIVE.CSS
+   Shared responsive layer for the Sammarshya Employee Portal.
+   Loaded last on every page so it can safely override the page-specific
+   stylesheets (style.css + home/attendance/leave/todo.css) without editing
+   them directly.
 
+   Breakpoints:
+     Desktop  : > 1024px  (default / unchanged design)
+     Tablet   : 769px - 1024px
+     Mobile   : <= 768px
+     Small    : <= 480px
+   ========================================================================== */
+
+/* ---------- Hamburger menu button (desktop: hidden) ---------- */
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: #F4F7FC;
+    color: var(--primary);
+    font-size: 18px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: .3s;
+}
+
+.menu-toggle:hover {
+    background: #EAF0FF;
+}
+
+/* ---------- Sidebar overlay (mobile/tablet drawer backdrop) ---------- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 26, 41, 0.45);
+    z-index: 900;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Prevent background scroll while the drawer is open */
+body.sidebar-locked {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   TABLET & MOBILE (<= 1024px)
+   Sidebar becomes an off-canvas drawer, opened via the hamburger button.
+   ========================================================================== */
 @media (max-width: 1024px) {
 
-    .sidebar {
-        width: 220px;
+    .menu-toggle {
+        display: flex;
     }
 
-    .attendance-top-grid,
-    .attendance-middle-grid,
-    .leave-top-grid,
-    .leave-middle-grid {
+    .sidebar {
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform .3s ease;
+        z-index: 950;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 8px 0 30px rgba(0, 0, 0, .15);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .navbar {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .search-box input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .nav-right span {
+        display: none; /* keep the avatar, hide the name label to save space */
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    /* ----- Home page ----- */
+    .quick-access {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
         grid-template-columns: 1fr;
     }
 
-    .attendance-stats,
+    /* ----- Attendance page ----- */
+    .attendance-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .attendance-top-grid,
+    .attendance-middle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ----- Leave page ----- */
     .leave-balance {
         grid-template-columns: repeat(2, 1fr);
     }
 
-}
-
-/* ===========================
-   MOBILE
-=========================== */
-
-@media (max-width:768px) {
-
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .menu {
-        display: flex;
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
-
-    .menu-item {
-        white-space: nowrap;
-    }
-
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-    }
-
-}
-
-@media (max-width:768px) {
-
-    .attendance-stats,
-    .leave-balance {
-
-        grid-template-columns: 1fr;
-    }
-
-    .attendance-top-grid,
-    .attendance-middle-grid,
     .leave-top-grid,
     .leave-middle-grid {
-
         grid-template-columns: 1fr;
     }
 
-}
-
-@media (max-width:768px) {
-
-    .navbar {
-
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
+    /* ----- To Do page ----- */
+    .task-stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .search-box {
+    .task-board {
+        grid-template-columns: 1fr;
+    }
 
+    .productivity-panel {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .productivity-left,
+    .productivity-right {
         width: 100%;
+    }
+}
+
+/* ==========================================================================
+   MOBILE (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 64px;
+        padding: 0 14px;
     }
 
     .search-box input {
-
-        width: 100%;
+        padding: 8px 10px;
+        font-size: 14px;
     }
 
-}
-
-@media (max-width:768px) {
-
-    table {
-
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-}
-
-@media (max-width:768px) {
-
-    .calendar-grid div {
-
-        height: 38px;
-        font-size: 13px;
-    }
-
-}
-
-@media (max-width:768px) {
-
-    .analytics-circle {
-
-        transform: scale(.8);
-        margin: auto;
-    }
-
-}
-
-/* ===========================
-   MOBILE SIDEBAR
-=========================== */
-
-.menu-toggle {
-
-    display: none;
-
-    font-size: 22px;
-
-    border: none;
-
-    background: #4A7DFF;
-
-    color: white;
-
-    padding: 12px 15px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    margin-bottom: 15px;
-
-}
-
-@media(max-width:768px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar {
-
-        position: fixed;
-
-        left: -260px;
-
-        top: 0;
-
-        width: 250px;
-
-        height: 100vh;
-
-        z-index: 1000;
-
-        transition: .35s;
-    }
-
-    .sidebar.active {
-
-        left: 0;
-    }
-
-}
-
-/* ===========================
-   RESPONSIVE LAYOUT
-=========================== */
-
-@media (max-width:768px) {
-
-    .container {
-        display: block;
-    }
-
-    .main-content {
-        width: 100%;
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100%;
-    }
-
-    .nav-right {
-        justify-content: space-between;
+    .content {
+        padding: 16px;
     }
 
     .hero-banner {
         padding: 20px;
+        border-radius: 16px;
     }
 
-}
-
-@media(max-width:768px) {
-
-    .attendance-stats,
-    .leave-balance {
-
-        grid-template-columns: 1fr;
+    .hero-banner h1 {
+        font-size: 22px;
     }
 
-    .attendance-top-grid,
-    .attendance-middle-grid,
-    .leave-top-grid,
-    .leave-middle-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .history-card {
-
-        overflow-x: auto;
-    }
-
-    table {
-
-        min-width: 700px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .calendar-grid div {
-
-        height: 38px;
-
-        font-size: 13px;
-    }
-
-    .calendar-days {
-
-        font-size: 12px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    canvas {
-
-        width: 100% !important;
-
-        height: 260px !important;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .analytics-circle {
-
-        width: 150px;
-        height: 150px;
-    }
-
-    .analytics-circle svg {
-
-        width: 150px;
-        height: 150px;
-    }
-
-    .circle-inner {
-
-        width: 110px;
-        height: 110px;
-
-        top: 20px;
-        left: 20px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .session-buttons {
-
-        flex-direction: column;
-    }
-
-    .login-btn,
-    .logout-btn,
-    #submitLeaveBtn {
-
-        width: 100%;
-    }
-
-}
-
-/* ===========================
-   TABLETS & PHONES (991px and below)
-=========================== */
-
-@media (max-width: 991px) {
-
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 20px;
-    }
-
-    .logo-section {
-        margin-bottom: 0;
-    }
-
-    .logo-section img {
-        width: 60px;
-    }
-
-    .menu {
-        display: flex;
+    /* ----- Home ----- */
+    .quick-access {
         gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
-    .menu-item {
-        margin: 0;
-        padding: 10px 14px;
-        border-radius: 10px;
-        font-size: 14px;
+    .quick-card {
+        padding: 18px;
     }
 
-    .main-content {
-        width: 100%;
-        margin-left: 0;
+    .panel {
+        min-height: unset;
+        padding: 18px;
     }
 
-}
-
-/* ===========================
-   RESPONSIVE GRID LAYOUT
-=========================== */
-
-/* Tablets */
-@media (max-width: 992px) {
-
-    .attendance-stats,
-    .leave-balance {
-        grid-template-columns: repeat(2, 1fr);
+    .timer-section h1 {
+        font-size: 32px;
     }
 
-    .attendance-top-grid,
-    .attendance-middle-grid,
-    .leave-top-grid,
-    .leave-middle-grid {
-        grid-template-columns: 1fr;
+    /* ----- Attendance ----- */
+    .attendance-stats {
+        gap: 12px;
     }
 
-}
+    .attendance-card {
+        padding: 16px;
+    }
 
-/* ===========================
-   MOBILE LAYOUT
-=========================== */
-
-@media (max-width: 768px) {
-
-    .attendance-stats,
-    .leave-balance {
-        grid-template-columns: 1fr;
+    .attendance-card h2 {
+        font-size: 26px;
     }
 
     .attendance-top-grid,
-    .attendance-middle-grid,
-    .leave-top-grid,
-    .leave-middle-grid {
-        grid-template-columns: 1fr;
+    .attendance-middle-grid {
+        gap: 14px;
     }
 
-    .attendance-card,
-    .balance-card,
     .session-card,
     .attendance-analytics,
     .chart-card,
     .insights-card,
-    .calendar-card,
-    .history-card,
-    .leave-form-card,
-    .team-leave-card,
-    .summary-card {
-
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-}
-
-/* ===========================
-   RESPONSIVE FORMS
-=========================== */
-
-@media (max-width:768px) {
-
-    .search-box {
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100%;
-        font-size: 15px;
-    }
-
-    input,
-    select,
-    textarea {
-        width: 100%;
-        font-size: 15px;
-        padding: 12px;
-        box-sizing: border-box;
-    }
-
-    textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
-
-    .date-group {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .date-field {
-        width: 100%;
-    }
-
-}
-
-/* ===========================
-   RESPONSIVE BUTTONS
-=========================== */
-
-@media (max-width:768px) {
-
-    button,
-    .login-btn,
-    .logout-btn,
-    #submitLeaveBtn {
-
-        width: 100%;
-        padding: 14px;
-        font-size: 15px;
-    }
-
-    .session-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-}
-
-/* ===========================
-   PROFILE
-=========================== */
-
-@media (max-width:768px) {
-
-    .nav-right {
-
-        width: 100%;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-    }
-
-    .profile {
-
-        gap: 8px;
-    }
-
-    .profile span {
-
-        font-size: 14px;
-    }
-
-}
-
-/* ===========================
-   MOBILE SPACING
-=========================== */
-
-@media (max-width:768px) {
-
-    .hero-banner,
-    .attendance-card,
-    .balance-card,
-    .session-card,
-    .attendance-analytics,
-    .chart-card,
-    .calendar-card,
-    .history-card,
-    .leave-form-card,
-    .team-leave-card,
-    .summary-card {
-
+    .calendar-card {
         padding: 18px;
     }
 
-    h1 {
-        font-size: 26px;
+    .analytics-circle,
+    .progress-ring {
+        width: 140px;
+        height: 140px;
+        margin: 20px auto;
     }
 
-    h2 {
-        font-size: 20px;
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-
-}
-
-/* ===========================
-   RESPONSIVE CALENDAR
-=========================== */
-
-@media (max-width:768px) {
-
-    .calendar-card {
-        overflow-x: auto;
-    }
-
-    .attendance-calendar,
-    .leave-calendar {
-        min-width: 650px;
-    }
-
-    .calendar-header h3 {
-        font-size: 18px;
-    }
-
-    .calendar-days div {
-
-        font-size: 13px;
-        padding: 8px 0;
-    }
-
-    .calendar-grid {
-
-        gap: 6px;
-    }
-
-    .calendar-grid div {
-
-        height: 40px;
-        font-size: 14px;
-    }
-
-}
-
-/* ===========================
-   CHART
-=========================== */
-
-@media(max-width:768px) {
-
-    .chart-card {
-
-        overflow-x: auto;
-    }
-
-    #attendanceChart {
-
-        width: 100% !important;
-        height: 280px !important;
-    }
-
-}
-
-/* ===========================
-   RESPONSIVE TABLES
-=========================== */
-
-@media(max-width:768px) {
-
-    .history-card {
-
-        overflow-x: auto;
-    }
-
-    .history-card table {
-
-        min-width: 700px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .attendance-card i,
-    .balance-card i {
-
-        font-size: 22px;
-    }
-
-    .attendance-card h2,
-    .balance-card h2 {
-
-        font-size: 28px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .hero-banner {
-
-        text-align: center;
-    }
-
-    .hero-banner h1 {
-
-        font-size: 28px;
-    }
-
-    .hero-banner p {
-
-        font-size: 14px;
-    }
-
-}
-
-@media(max-width:768px) {
-
-    .analytics-circle {
-
-        width: 160px;
-        height: 160px;
-    }
-
-    .analytics-circle svg {
-
-        width: 160px;
-        height: 160px;
+    .analytics-circle svg,
+    .progress-ring svg {
+        width: 140px;
+        height: 140px;
     }
 
     .circle-inner {
-
-        width: 118px;
-        height: 118px;
-
-        left: 21px;
-        top: 21px;
+        width: 100px;
+        height: 100px;
+        top: 20px;
+        left: 20px;
     }
 
     .circle-inner h2 {
-
-        font-size: 28px;
+        font-size: 22px;
     }
 
-}
-
-@media(max-width:768px) {
-
-    button {
-
-        min-height: 44px;
+    .calendar-grid div {
+        height: 34px;
+        font-size: 13px;
     }
 
-    .menu-item {
-
-        min-height: 44px;
-        display: flex;
-        align-items: center;
+    .calendar-legend {
+        gap: 12px;
+        padding: 10px 14px;
     }
 
-}
+    .legend-item {
+        font-size: 12px;
+    }
 
-/* Tablets */
-@media (max-width:992px) {
-
-    .attendance-stats,
+    /* ----- Leave ----- */
     .leave-balance {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    .attendance-top-grid,
-    .attendance-middle-grid,
-    .leave-top-grid,
-    .leave-middle-grid {
-        grid-template-columns: 1fr;
+    .balance-card {
+        padding: 16px;
     }
 
-}
-
-/* ===========================
-   RESPONSIVE NAVBAR
-=========================== */
-
-@media (max-width:768px) {
-
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100%;
-    }
-
-    .nav-right {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .profile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-}
-
-/* ===========================
-   HERO SECTION
-=========================== */
-
-@media (max-width:768px) {
-
-    .hero-banner {
-
-        padding: 20px;
-        text-align: center;
-    }
-
-    .hero-banner h1 {
-
-        font-size: 28px;
-    }
-
-    .hero-banner p {
-
-        font-size: 15px;
-    }
-
-}
-
-/* ===========================
-   FORMS
-=========================== */
-
-@media (max-width:768px) {
-
-    input,
-    select,
-    textarea {
-
-        width: 100%;
-        box-sizing: border-box;
+    .leave-form-card,
+    .team-leave-card,
+    .calendar-card,
+    .summary-card,
+    .history-card {
+        padding: 18px;
     }
 
     .date-group {
-
-        display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
 
-    .date-field {
-
-        width: 100%;
+    .approval-timeline {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
     }
 
-}
+    .approval-timeline .step {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
 
-/* ===========================
-   BUTTONS
-=========================== */
+    .approval-timeline .line {
+        flex: 0 0 24px;
+    }
 
-@media (max-width:768px) {
+    .table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-    .session-buttons {
+    .table-scroll table {
+        min-width: 600px;
+    }
 
+    .history-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* ----- To Do ----- */
+    .task-stats {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    .task-form {
         flex-direction: column;
     }
 
-    .login-btn,
-    .logout-btn,
-    #submitLeaveBtn {
-
-        width: 100%;
+    .productivity-panel {
+        padding: 20px;
+        gap: 24px;
     }
-
 }
 
-/* ===========================
-   TABLES
-=========================== */
+/* ==========================================================================
+   SMALL MOBILE (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
 
-@media (max-width:768px) {
-
-    .history-card {
-
-        overflow-x: auto;
+    .quick-access,
+    .attendance-stats,
+    .leave-balance,
+    .task-stats {
+        grid-template-columns: 1fr;
     }
 
-    .history-card table {
-
-        min-width: 700px;
+    .nav-right {
+        gap: 10px;
     }
 
+    .search-box input {
+        font-size: 13px;
+    }
+
+    .hero-banner h1 {
+        font-size: 20px;
+    }
+
+    .hero-banner p {
+        font-size: 14px;
+    }
+
+    .timer-section h1 {
+        font-size: 28px;
+    }
+
+    .analytics-circle,
+    .progress-ring {
+        width: 120px;
+        height: 120px;
+    }
+
+    .analytics-circle svg,
+    .progress-ring svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .circle-inner {
+        width: 86px;
+        height: 86px;
+        top: 17px;
+        left: 17px;
+    }
+
+    .circle-inner h2 {
+        font-size: 18px;
+    }
+
+    .calendar-grid div {
+        height: 30px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .calendar-days {
+        font-size: 12px;
+    }
 }
-
-/* ===========================
-   CALENDAR
-=========================== */
-
-@media (max-width:768px) {
-
-    .calendar-card {
-
-        overflow-x: auto;
-    }
-
-    .attendance-calendar,
-    .leave-calendar {
-
-        min-width: 650px;
-    }
-
-}
-
