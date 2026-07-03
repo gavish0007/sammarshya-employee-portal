@@ -8,6 +8,11 @@
 
     <title>Attendance | Sammarshya Employee Portal</title>
 
+    <link rel="icon" type="image/jpeg" href="assets/logo/logo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/attendance.css">
 
@@ -16,7 +21,7 @@
 
 </head>
 
-<body>
+<body data-page="attendance">
 
     <div class="container">
 
@@ -25,7 +30,9 @@
         <aside class="sidebar">
 
             <div class="logo-section">
-                <img src="assets/logo/logo.jpeg" alt="Logo">
+                <a href="index.html" class="logo-link" aria-label="Go to Home">
+                    <img src="assets/logo/logo.jpeg" alt="Logo">
+                </a>
             </div>
 
             <nav class="menu">
@@ -70,7 +77,7 @@
                 </button>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Search attendance records...">
+                    <input type="text" id="searchInput" placeholder="Search insights, legend...">
                 </div>
 
                 <div class="nav-right">
@@ -103,6 +110,10 @@
                     </p>
 
                 </div>
+
+                <p id="searchNoResults" class="search-no-results" hidden>
+                    No matches found. Try a different search term.
+                </p>
 
                 <!-- STATS -->
 
@@ -280,24 +291,24 @@
 
                         <h2>Insights</h2>
 
-                        <div class="insight-item">
+                        <div class="insight-item searchable">
                             <span>Average Login</span>
-                            <strong>09:08 AM</strong>
+                            <strong id="avgLoginInsight">09:08 AM</strong>
                         </div>
 
-                        <div class="insight-item">
+                        <div class="insight-item searchable">
                             <span>Attendance Streak</span>
-                            <strong>14 Days</strong>
+                            <strong id="streakInsight">14 Days</strong>
                         </div>
 
-                        <div class="insight-item">
+                        <div class="insight-item searchable">
                             <span>Avg Hours</span>
-                            <strong>8.2h</strong>
+                            <strong id="avgHoursInsight">8.2h</strong>
                         </div>
 
-                        <div class="insight-item">
+                        <div class="insight-item searchable">
                             <span>Overtime</span>
-                            <strong>12h</strong>
+                            <strong id="overtimeInsight">12h</strong>
                         </div>
 
                     </div>
@@ -373,6 +384,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/attendance.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/responsive.js"></script>
 
 </body>

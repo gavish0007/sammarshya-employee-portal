@@ -106,21 +106,38 @@ function displayLeaves() {
 
     leaveHistoryBody.innerHTML = "";
 
+    if (leaves.length === 0) {
+
+        const emptyRow = document.createElement("tr");
+
+        emptyRow.innerHTML = `
+            <td colspan="6" class="empty-state">
+                No leave requests yet. Apply for leave using the form above.
+            </td>
+        `;
+
+        leaveHistoryBody.appendChild(emptyRow);
+
+        updateAnalytics();
+
+        return;
+    }
+
     leaves.forEach((leave, index) => {
 
         const row = document.createElement("tr");
 
         row.innerHTML = `
 
-<td>${leave.type}</td>
+<td data-label="Leave Type">${leave.type}</td>
 
-<td>${leave.from}</td>
+<td data-label="From">${leave.from}</td>
 
-<td>${leave.to}</td>
+<td data-label="To">${leave.to}</td>
 
-<td>${leave.days}</td>
+<td data-label="Days">${leave.days}</td>
 
-<td>
+<td data-label="Status">
 
 <span class="status ${leave.status.toLowerCase()}">
 
@@ -130,7 +147,9 @@ ${leave.status}
 
 </td>
 
-<td class="action-buttons">
+<td data-label="Action" class="action-cell">
+
+<div class="action-buttons">
 
 <button
 class="approve-btn"
@@ -155,6 +174,8 @@ data-index="${index}">
 Delete
 
 </button>
+
+</div>
 
 </td>
 
@@ -226,6 +247,7 @@ submitLeaveBtn.addEventListener("click", () => {
 
     displayLeaves();
     renderCalendar();
+    renderRecentActivity();
 
     leaveType.value = "";
 
@@ -309,6 +331,8 @@ leaveHistoryBody.addEventListener("click", (e) => {
 
     displayLeaves();
     renderCalendar();
+    renderRecentActivity();
+    updateBalanceCards();
 
 });
 
@@ -344,6 +368,48 @@ function updateAnalytics() {
     document.getElementById("usedLeavesCount").textContent =
         used;
 
+    updateLeaveProgressRing();
+
+}
+
+// ===============================
+// LEAVE PROGRESS RING (days used vs total allotted)
+// ===============================
+
+function updateLeaveProgressRing() {
+
+    const ring = document.getElementById("leaveProgressRing");
+    const percentLabel = document.getElementById("leaveUsedPercent");
+
+    if (!ring || !percentLabel) return;
+
+    const totalAllotted =
+        DEFAULT_BALANCE.casual +
+        DEFAULT_BALANCE.sick +
+        DEFAULT_BALANCE.earned;
+
+    const balance = getBalance();
+
+    const remaining =
+        balance.casual + balance.sick + balance.earned;
+
+    const usedDays = Math.max(0, totalAllotted - remaining);
+
+    let percent = Math.round((usedDays / totalAllotted) * 100);
+
+    if (percent > 100) percent = 100;
+    if (percent < 0) percent = 0;
+
+    percentLabel.textContent = percent + "%";
+
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+
+    const offset =
+        circumference - (percent / 100) * circumference;
+
+    ring.style.strokeDasharray = circumference;
+    ring.style.strokeDashoffset = offset;
 }
 function updateBalanceCards() {
 
@@ -494,6 +560,85 @@ document
 
 
 // ===============================
+// EXPORT LEAVE HISTORY (CSV)
+// ===============================
+
+function exportLeaveHistory() {
+
+    const leaves = getLeaves();
+
+    if (leaves.length === 0) {
+        alert("There are no leave requests to export yet.");
+        return;
+    }
+
+    const header = ["Leave Type", "From", "To", "Days", "Status"];
+
+    const rows = leaves.map(l => [l.type, l.from, l.to, l.days, l.status]);
+
+    const csvContent = [header, ...rows]
+        .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+        .join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `leave-history-${new Date().toISOString().split("T")[0]}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+
+const exportLeaveBtn = document.getElementById("exportLeaveBtn");
+
+if (exportLeaveBtn) {
+    exportLeaveBtn.addEventListener("click", exportLeaveHistory);
+}
+
+// ===============================
+// RECENT ACTIVITY (derived from real leave requests)
+// ===============================
+
+const activityIcons = {
+    Approved: { icon: "✔", cls: "approved-act" },
+    Pending: { icon: "⏳", cls: "pending-act" },
+    Rejected: { icon: "✖", cls: "rejected-act" }
+};
+
+function renderRecentActivity() {
+
+    const list = document.getElementById("recentActivityList");
+
+    if (!list) return;
+
+    const leaves = getLeaves();
+
+    if (leaves.length === 0) {
+        list.innerHTML =
+            `<p class="empty-state">No activity yet. Submit a leave request to get started.</p>`;
+        return;
+    }
+
+    const recent = leaves.slice(-3).reverse();
+
+    list.innerHTML = recent.map(leave => {
+
+        const meta = activityIcons[leave.status] || activityIcons.Pending;
+
+        return `
+            <div class="activity-item ${meta.cls} searchable">
+                ${meta.icon} ${leave.type} ${leave.status}
+            </div>
+        `;
+
+    }).join("");
+}
+
+// ===============================
 // INITIAL LOAD
 // ===============================
 
@@ -504,3 +649,5 @@ updateAnalytics();
 updateBalanceCards();
 
 renderCalendar();
+
+renderRecentActivity();

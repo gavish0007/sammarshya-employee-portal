@@ -1,3 +1,40 @@
+/* =========================
+   DYNAMIC GREETING + DATE
+========================= */
+
+function updateGreetingAndDate() {
+
+    const greetingEl = document.getElementById("greetingText");
+    const dateEl = document.getElementById("currentDate");
+
+    const now = new Date();
+    const hour = now.getHours();
+
+    let greeting = "Good Evening";
+    if (hour < 12) greeting = "Good Morning";
+    else if (hour < 17) greeting = "Good Afternoon";
+
+    if (greetingEl) {
+        greetingEl.textContent = `${greeting}, Gavish`;
+    }
+
+    if (dateEl) {
+        dateEl.textContent = now.toLocaleDateString("en-US", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+    }
+}
+
+updateGreetingAndDate();
+
+/* Keep the greeting/date correct if the portal is left open across midnight
+   or into the next part of the day */
+setInterval(updateGreetingAndDate, 60 * 1000);
+
+
 const progressFill = document.getElementById("progressFill");
 const progressPercent = document.getElementById("progressPercent");
 

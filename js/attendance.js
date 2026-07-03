@@ -24,6 +24,17 @@ function saveWorkHistory(history) {
     );
 }
 
+function getLoginHistory() {
+    return JSON.parse(localStorage.getItem("attendanceLoginHistory")) || {};
+}
+
+function saveLoginHistory(history) {
+    localStorage.setItem(
+        "attendanceLoginHistory",
+        JSON.stringify(history)
+    );
+}
+
 function saveTodayWorkSeconds(seconds) {
     const history = getWorkHistory();
 
@@ -78,7 +89,7 @@ function getWeeklyHoursData() {
 }
 
 function createAttendanceChart() {
-    if (!ctx) {
+    if (!ctx || typeof Chart === "undefined") {
         return;
     }
 
@@ -145,6 +156,76 @@ function updateAttendanceChart() {
 }
 
 createAttendanceChart();
+
+
+/* =========================
+   INSIGHTS (real values from stored history)
+========================= */
+
+function updateInsights() {
+
+    const workHistory = getWorkHistory();
+    const loginHistory = getLoginHistory();
+
+    const workedDays =
+        Object.keys(workHistory).filter(k => workHistory[k] > 0);
+
+    let totalHours = 0;
+    let overtimeHours = 0;
+
+    workedDays.forEach(key => {
+        const hrs = workHistory[key] / 3600;
+        totalHours += hrs;
+        if (hrs > 8) overtimeHours += (hrs - 8);
+    });
+
+    const avgHours = workedDays.length ? (totalHours / workedDays.length) : 0;
+
+    // Streak: consecutive days up to today with recorded work time
+    let streak = 0;
+    const cursor = new Date();
+
+    while (true) {
+        const key = getDateKey(cursor);
+        if (workHistory[key] && workHistory[key] > 0) {
+            streak++;
+            cursor.setDate(cursor.getDate() - 1);
+        } else {
+            break;
+        }
+    }
+
+    // Average login time across recorded logins
+    const loginKeys = Object.keys(loginHistory);
+    let avgLoginText = "--:--";
+
+    if (loginKeys.length) {
+        const totalMinutes = loginKeys.reduce((sum, key) => {
+            const d = new Date(loginHistory[key]);
+            return sum + d.getHours() * 60 + d.getMinutes();
+        }, 0);
+
+        const avgMinutes = Math.round(totalMinutes / loginKeys.length);
+        const h = Math.floor(avgMinutes / 60);
+        const m = avgMinutes % 60;
+
+        const displayHour = (h % 12 === 0) ? 12 : h % 12;
+        const ampm = h >= 12 ? "PM" : "AM";
+
+        avgLoginText =
+            `${String(displayHour).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
+    }
+
+    const avgLoginEl = document.getElementById("avgLoginInsight");
+    const streakEl = document.getElementById("streakInsight");
+    const avgHoursEl = document.getElementById("avgHoursInsight");
+    const overtimeEl = document.getElementById("overtimeInsight");
+
+    if (avgLoginEl) avgLoginEl.textContent = avgLoginText;
+    if (streakEl) streakEl.textContent = `${streak} Day${streak === 1 ? "" : "s"}`;
+    if (avgHoursEl) avgHoursEl.textContent = `${avgHours.toFixed(1)}h`;
+    if (overtimeEl) overtimeEl.textContent = `${Math.round(overtimeHours)}h`;
+}
 
 
 /* =========================
@@ -242,6 +323,7 @@ function updateSession() {
     // Updates the weekly chart live
     updateAttendanceChart();
     renderAttendanceCalendar();
+    updateInsights();
 }
 
 
@@ -298,6 +380,7 @@ function showLoggedOutState() {
 
     updateAttendanceChart();
     renderAttendanceCalendar();
+    updateInsights();
 }
 
 
@@ -314,6 +397,10 @@ loginBtn.addEventListener("click", () => {
     localStorage.setItem("attendanceLoggedIn", "true");
 
     localStorage.setItem("workSeconds", "0");
+
+    const loginHistory = getLoginHistory();
+    loginHistory[getDateKey()] = now;
+    saveLoginHistory(loginHistory);
 
     showLoggedInState();
 });

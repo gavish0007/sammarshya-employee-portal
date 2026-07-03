@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sammarshya Employee Portal</title>
 
+    <link rel="icon" type="image/jpeg" href="assets/logo/logo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
-<body>
+<body data-page="home">
     <div class="container">
 
         <!-- Sidebar -->
@@ -20,9 +25,9 @@
 
             <div class="logo-section">
 
-                <img src="assets\logo\logo.jpeg" alt="Sammarshya Logo">
-
-
+                <a href="index.html" class="logo-link" aria-label="Go to Home">
+                    <img src="assets\logo\logo.jpeg" alt="Sammarshya Logo">
+                </a>
 
             </div>
 
@@ -67,7 +72,7 @@
                 </button>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" id="searchInput" placeholder="Search pages, holidays, announcements...">
                 </div>
 
                 <div class="nav-right">
@@ -96,7 +101,7 @@
                 <!-- Hero Banner -->
                 <div class="hero-banner">
 
-                    <h1>Good Evening, Gavish </h1>
+                    <h1 id="greetingText">Good Evening, Gavish</h1>
 
                     <p>
                         Welcome to Sammarshya Employee Portal
@@ -104,28 +109,30 @@
 
                 </div>
 
-
+                <p id="searchNoResults" class="search-no-results" hidden>
+                    No matches found. Try a different search term.
+                </p>
 
                 <!-- Quick Access -->
 
                 <div class="quick-access">
 
-                    <a href="attendance.html" class="quick-card">
+                    <a href="attendance.html" class="quick-card searchable">
                         <i class="fa-solid fa-clock"></i>
                         <h3>Attendance</h3>
                     </a>
 
-                    <a href="leave.html" class="quick-card">
+                    <a href="leave.html" class="quick-card searchable">
                         <i class="fa-solid fa-calendar-days"></i>
                         <h3>Leave</h3>
                     </a>
 
-                    <a href="todo.html" class="quick-card">
+                    <a href="todo.html" class="quick-card searchable">
                         <i class="fa-solid fa-list-check"></i>
                         <h3>To Do</h3>
                     </a>
 
-                    <a href="#" class="quick-card">
+                    <a href="#" class="quick-card searchable">
                         <i class="fa-solid fa-user"></i>
                         <h3>Profile</h3>
                     </a>
@@ -202,9 +209,9 @@
                         <h2>Upcoming Holidays</h2>
 
                         <ul>
-                            <li>15 Aug - Independence Day</li>
-                            <li>2 Oct - Gandhi Jayanti</li>
-                            <li>25 Dec - Christmas</li>
+                            <li class="searchable">15 Aug - Independence Day</li>
+                            <li class="searchable">2 Oct - Gandhi Jayanti</li>
+                            <li class="searchable">25 Dec - Christmas</li>
                         </ul>
 
                     </div>
@@ -237,9 +244,9 @@
                         <h2>Announcements</h2>
 
                         <ul>
-                            <li>New Leave Policy Released</li>
-                            <li>Independence Day Celebration</li>
-                            <li>Quarterly Review Meeting</li>
+                            <li class="searchable">New Leave Policy Released</li>
+                            <li class="searchable">Independence Day Celebration</li>
+                            <li class="searchable">Quarterly Review Meeting</li>
                         </ul>
 
                     </div>
@@ -254,6 +261,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/responsive.js"></script>
 </body>
 

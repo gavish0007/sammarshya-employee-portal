@@ -12,6 +12,79 @@
      Small    : <= 480px
    ========================================================================== */
 
+/* ---------- Professional typography ---------- */
+* {
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* ---------- Search states ---------- */
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(74, 125, 255, 0.12);
+}
+
+.search-no-results {
+    text-align: center;
+    color: #7A8599;
+    background: #F7F9FC;
+    border: 1px dashed #DCE3F0;
+    border-radius: 14px;
+    padding: 16px;
+    margin: -6px 0 20px;
+    font-size: 14px;
+}
+
+.empty-state {
+    color: #A0A8B8;
+    font-size: 14px;
+    text-align: center;
+    padding: 14px 0;
+}
+
+/* ---------- Global: never allow sideways scrolling ---------- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.container,
+.main-content,
+.content {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img, svg, table {
+    max-width: 100%;
+}
+
+/* ---------- Clickable logo -> Home ---------- */
+.logo-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ---------- Search: no-results state ---------- */
+.search-no-results {
+    text-align: center;
+    color: #7A8599;
+    background: #F7F9FC;
+    border: 1px dashed #DCE3EE;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* ---------- Recent activity / empty states ---------- */
+.empty-state {
+    color: #A0A8B8;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
 /* ---------- Hamburger menu button (desktop: hidden) ---------- */
 .menu-toggle {
     display: none;
@@ -286,28 +359,87 @@ body.sidebar-locked {
         gap: 12px;
     }
 
+    /* Vertical stepper instead of a horizontally scrolling timeline */
     .approval-timeline {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
     }
 
     .approval-timeline .step {
-        flex-shrink: 0;
-        white-space: nowrap;
+        width: 100%;
     }
 
     .approval-timeline .line {
-        flex: 0 0 24px;
+        flex: none;
+        width: 2px;
+        height: 16px;
+        margin-left: 22px;
     }
 
-    .table-scroll {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+    /* Leave history table becomes a stacked card list — no horizontal scroll */
+    .table-scroll table,
+    .table-scroll thead,
+    .table-scroll tbody,
+    .table-scroll th,
+    .table-scroll td,
+    .table-scroll tr {
+        display: block;
+        width: 100%;
     }
 
-    .table-scroll table {
-        min-width: 600px;
+    .table-scroll thead {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .table-scroll tbody tr {
+        background: #F7F9FC;
+        border: 1px solid #EDF1F7;
+        border-radius: 14px;
+        padding: 6px 14px;
+        margin-bottom: 12px;
+    }
+
+    .table-scroll tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-scroll td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #E9EDF5;
+        text-align: right;
+    }
+
+    .table-scroll td:last-child {
+        border-bottom: none;
+    }
+
+    .table-scroll td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 13px;
+        color: #7A8599;
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    .table-scroll td.action-cell {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-scroll td.action-cell::before {
+        margin-bottom: 8px;
+    }
+
+    .table-scroll .action-buttons {
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 
     .history-header {

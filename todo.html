@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do | Sammarshya Employee Portal</title>
 
+    <link rel="icon" type="image/jpeg" href="assets/logo/logo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/todo.css">
 
@@ -13,7 +18,7 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
-<body>
+<body data-page="todo">
 
     <div class="container">
 
@@ -22,7 +27,9 @@
         <aside class="sidebar">
 
             <div class="logo-section">
-                <img src="assets/logo/logo.jpeg" alt="Logo">
+                <a href="index.html" class="logo-link" aria-label="Go to Home">
+                    <img src="assets/logo/logo.jpeg" alt="Logo">
+                </a>
             </div>
 
             <nav class="menu">
@@ -67,7 +74,7 @@
                 </button>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Search tasks...">
+                    <input type="text" id="searchInput" placeholder="Search tasks by title or description...">
                 </div>
 
                 <div class="nav-right">
@@ -127,7 +134,7 @@
 
                     <div class="stat-card overdue">
                         <h3>Overdue</h3>
-                        <h2>3</h2>
+                        <h2 id="overdueTasksCount">0</h2>
                     </div>
 
                 </div>
@@ -153,6 +160,10 @@
                     </div>
 
                 </div>
+
+                <p id="searchNoResults" class="search-no-results" hidden>
+                    No matching tasks found. Try a different search term.
+                </p>
 
                 <!-- TASK BOARD -->
 
@@ -339,6 +350,7 @@
     </div>
 
     <script src="js/todo.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/responsive.js"></script>
 
 </body>

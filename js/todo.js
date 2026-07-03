@@ -89,7 +89,7 @@ addTaskBtn.addEventListener("click", () => {
         <div class="task-footer">
             <span class="priority high">High Priority</span>
 
-            <span class="due-date">
+            <span class="due-date" data-due="${dueDate}">
                 ${dueDate || "No Date"}
             </span>
         </div>
@@ -154,6 +154,29 @@ function updateStats() {
     totalTasksCount.textContent = totalTasks;
     completedTasksCount.textContent = completedTasks;
     pendingTasksCount.textContent = pendingTasks;
+
+    /* Overdue = has a real due date in the past AND isn't completed */
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let overdueCount = 0;
+
+    document.querySelectorAll(".task-card").forEach(card => {
+        if (card.closest(".task-column") === completedColumn) return;
+
+        const dueSpan = card.querySelector(".due-date[data-due]");
+        const dueValue = dueSpan ? dueSpan.dataset.due : "";
+
+        if (!dueValue) return;
+
+        const dueDate = new Date(dueValue);
+        if (!isNaN(dueDate) && dueDate < today) {
+            overdueCount++;
+        }
+    });
+
+    const overdueEl = document.getElementById("overdueTasksCount");
+    if (overdueEl) overdueEl.textContent = overdueCount;
 }
 
 
@@ -231,6 +254,35 @@ const existingTaskCards =
     document.querySelectorAll(".task-card");
 
 existingTaskCards.forEach(taskCard => {
+
+    /* Seed cards written directly in HTML don't ship with action
+       buttons the way JS-created cards do — add them so every card
+       on the board is equally functional. */
+    if (!taskCard.querySelector(".task-actions")) {
+
+        const isCompleted =
+            taskCard.closest(".task-column") === completedColumn;
+
+        const actions = document.createElement("div");
+        actions.classList.add("task-actions");
+
+        actions.innerHTML = isCompleted
+            ? `<button class="delete-btn">
+                   <i class="fa-solid fa-trash"></i>
+                   Delete
+               </button>`
+            : `<button class="complete-btn">
+                   <i class="fa-solid fa-check"></i>
+                   Complete
+               </button>
+               <button class="delete-btn">
+                   <i class="fa-solid fa-trash"></i>
+                   Delete
+               </button>`;
+
+        taskCard.appendChild(actions);
+    }
+
     makeTaskDraggable(taskCard);
     addTaskActions(taskCard);
 });

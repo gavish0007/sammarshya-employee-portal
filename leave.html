@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave Management | Sammarshya Employee Portal</title>
 
+    <link rel="icon" type="image/jpeg" href="assets/logo/logo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/leave.css">
 
@@ -13,7 +18,7 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
-<body>
+<body data-page="leave">
 
     <div class="container">
 
@@ -22,7 +27,9 @@
         <aside class="sidebar">
 
             <div class="logo-section">
-                <img src="assets/logo/logo.jpeg" alt="Logo">
+                <a href="index.html" class="logo-link" aria-label="Go to Home">
+                    <img src="assets/logo/logo.jpeg" alt="Logo">
+                </a>
             </div>
 
             <nav class="menu">
@@ -67,7 +74,7 @@
                 </button>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Search leave requests...">
+                    <input type="text" id="searchInput" placeholder="Search leave history, employees...">
                 </div>
 
                 <div class="nav-right">
@@ -160,6 +167,10 @@
 
                 </div>
 
+                <p id="searchNoResults" class="search-no-results" hidden>
+                    No matches found. Try a different search term.
+                </p>
+
                 <!-- APPLY LEAVE + TEAM STATUS -->
 
                 <div class="leave-top-grid">
@@ -234,22 +245,22 @@
 
                         <h2>Employees On Leave Today</h2>
 
-                        <div class="employee-item">
+                        <div class="employee-item searchable">
                             <i class="fa-solid fa-user"></i>
                             Rahul Sharma
                         </div>
 
-                        <div class="employee-item">
+                        <div class="employee-item searchable">
                             <i class="fa-solid fa-user"></i>
                             Priya Singh
                         </div>
 
-                        <div class="employee-item">
+                        <div class="employee-item searchable">
                             <i class="fa-solid fa-user"></i>
                             Amit Verma
                         </div>
 
-                        <div class="employee-item">
+                        <div class="employee-item searchable">
                             <i class="fa-solid fa-user"></i>
                             Sneha Kapoor
                         </div>
@@ -258,16 +269,8 @@
 
                         <h3>Recent Activity</h3>
 
-                        <div class="activity-item approved-act">
-                            ✔ Sick Leave Approved
-                        </div>
-
-                        <div class="activity-item pending-act">
-                            ⏳ Casual Leave Pending
-                        </div>
-
-                        <div class="activity-item rejected-act">
-                            ✖ Earned Leave Rejected
+                        <div id="recentActivityList">
+                            <p class="empty-state">No activity yet. Submit a leave request to get started.</p>
                         </div>
 
                     </div>
@@ -288,19 +291,15 @@
 
                             <div class="calendar-header">
 
-                                <div class="calendar-header">
+                                <button id="prevMonthBtn" type="button">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
 
-                                    <button id="prevMonthBtn" type="button">
-                                        <i class="fa-solid fa-chevron-left"></i>
-                                    </button>
+                                <h3 id="calendarMonthYear"></h3>
 
-                                    <h3 id="calendarMonthYear"></h3>
-
-                                    <button id="nextMonthBtn" type="button">
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                    </button>
-
-                                </div>
+                                <button id="nextMonthBtn" type="button">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
 
                             </div>
 
@@ -368,14 +367,14 @@
                                 <circle class="analytics-bg" cx="90" cy="90" r="70">
                                 </circle>
 
-                                <circle class="analytics-fill" cx="90" cy="90" r="70">
+                                <circle class="analytics-fill" id="leaveProgressRing" cx="90" cy="90" r="70">
                                 </circle>
 
                             </svg>
 
                             <div class="circle-inner">
 
-                                <h2>75%</h2>
+                                <h2 id="leaveUsedPercent">0%</h2>
 
                                 <span>Used</span>
 
@@ -428,7 +427,7 @@
 
                             <h2>Leave History</h2>
 
-                            <button>
+                            <button id="exportLeaveBtn" type="button">
                                 Export
                             </button>
 
@@ -475,6 +474,7 @@
     </div>
 
     <script src="js/leave.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/responsive.js"></script>
 
 </body>
